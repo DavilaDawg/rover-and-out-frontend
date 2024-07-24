@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button.jsx";
 
 
 const AnnotatedGallery = () => {
@@ -11,8 +12,8 @@ const AnnotatedGallery = () => {
 
   return (
     <div>
-      <h1>AnnotatedGallery works!</h1>
-      <button onClick={handleBack}>Back</button>
+      <h1>Annotated Gallery</h1>
+      <Button onClick={handleBack}>Back</Button>
     </div>
   );
 };

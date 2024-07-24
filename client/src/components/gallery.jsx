@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button.jsx";
 
 const Gallery = () => {
   const navigate = useNavigate();
@@ -42,12 +43,12 @@ const Gallery = () => {
 
   return (
     <div>
-      <h1>Gallery works</h1>
+      <h1>Gallery</h1>
       <button className="imgButton" onClick={navigateImgViewer}>
         <img src="/testimg1.jpg" alt="Test Image" />
       </button>
-      <button onClick={handleBack}>Back</button>
-      <button onClick={navigateAnnotated}>View all annotated</button>
+      <Button onClick={handleBack}>Back</Button>
+      <Button onClick={navigateAnnotated}>View all annotated</Button>
     </div>
   );
 };

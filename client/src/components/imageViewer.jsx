@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button.jsx";
+
 
 const ImageViewer = () => {
   const navigate = useNavigate();
@@ -10,8 +12,8 @@ const ImageViewer = () => {
 
   return (
     <div>
-      <h1>ImageViewer works</h1>
-      <button onClick={handleBack}>Back</button>
+      <h1>ImageViewer</h1>
+      <Button onClick={handleBack}>Back</Button>
     </div>
   );
 };

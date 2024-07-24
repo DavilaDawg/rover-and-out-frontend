@@ -1,8 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
+// Ui components:
 import ModeToggle from "./mode-toggle";
+import { Button } from "@/components/ui/button.jsx";
 
 const Dashboard = () => {
+
+  // Navigation:
   const navigate = useNavigate();
 
   function handleLogOut() {
@@ -23,12 +28,12 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Dashboard works</h1>
+      <h1>Dashboard</h1>
       <ModeToggle></ModeToggle>
-      <button onClick={handleLogOut}>Log out</button>
-      <button onClick={handleTimeline}>TimeLine</button>
-      <button onClick={handleGraphs}>Super cool graphs</button>
-      <button onClick={handleGallery}>Gallery</button>
+      <Button onClick={handleLogOut}>Log out</Button>
+      <Button onClick={handleTimeline}>TimeLine</Button>
+      <Button onClick={handleGraphs}>Super cool graphs</Button>
+      <Button onClick={handleGallery}>Gallery</Button>
     </div>
   );
 };

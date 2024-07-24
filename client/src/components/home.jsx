@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button.jsx";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -11,9 +12,14 @@ const Home = () => {
   return (
     <>
       <div className="flex h-full flex-col">
-        <h1 className="text-7xl font-semibold">Rover&Out home works!</h1>
-        <p className="text-2xl">List of technologies and libraries:</p>
-        <ul>
+        <div className="flex flex-row items-center justify-between">
+          <h1 className="text-8xl font-semibold m-6">Rover&Out</h1>
+          <Button className="m-7" onClick={handleClick}>
+            Login
+          </Button>
+        </div>
+        <p className="text-2xl ml-7 mt-10">List of technologies and libraries:</p>
+        <ul className="ml-7 mt-3">
           <li>React</li>
           <li>Javascript</li>
           <li>Express</li>
@@ -27,8 +33,6 @@ const Home = () => {
           <li>Tailwind</li>
           <li>Shadcn/ui</li>
         </ul>
-
-        <button onClick={handleClick}>Login</button>
       </div>
     </>
   );
