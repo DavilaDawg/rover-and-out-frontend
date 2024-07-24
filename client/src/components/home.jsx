@@ -10,9 +10,9 @@ const Home = () => {
 
   return (
     <>
-      <div>
-        <h1>Rover&Out home works!</h1>
-        <p>List of technologies and libraries:</p>
+      <div className="flex h-full flex-col">
+        <h1 className="text-7xl font-semibold">Rover&Out home works!</h1>
+        <p className="text-2xl">List of technologies and libraries:</p>
         <ul>
           <li>React</li>
           <li>Javascript</li>

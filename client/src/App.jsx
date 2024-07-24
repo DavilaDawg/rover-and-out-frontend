@@ -1,19 +1,19 @@
-import "./App.css";
-import './index.css'; 
+import "@/App.css";
+import '@/index.css'; 
 
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ThemeProvider } from "./components/theme-provider"; 
+import { ThemeProvider } from "@/components/theme-provider"; 
 
-import Home from "./components/home.jsx";
-import Login from "./components/login.jsx";
-import Dashboard from "./components/dashboard.jsx";
-import Timeline from "./components/timeline.jsx";
-import Gallery from "./components/gallery.jsx";
-import Graphs from "./components/graphs.jsx";
-import AnnotatedGallery from "./components/annotatedGallery.jsx";
-import ImageViewer from "./components/imageViewer.jsx";
-import DayGallery from "./components/dayGallery.jsx";
+import Home from "@/components/home.jsx";
+import Login from "@/components/login.jsx";
+import Dashboard from "@/components/dashboard.jsx";
+import Timeline from "@/components/timeline.jsx";
+import Gallery from "@/components/gallery.jsx";
+import Graphs from "@/components/graphs.jsx";
+import AnnotatedGallery from "@/components/annotatedGallery.jsx";
+import ImageViewer from "@/components/imageViewer.jsx";
+import DayGallery from "@/components/dayGallery.jsx";
 
 function App() {
   return (
