@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider"; 
 
 import Home from "@/components/home.jsx";
-import Login from "@/components/login.jsx";
+import MyLogin from "@/components/login.jsx";
 import Dashboard from "@/components/dashboard.jsx";
 import Timeline from "@/components/timeline.jsx";
 import Gallery from "@/components/gallery.jsx";
@@ -22,7 +22,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<MyLogin />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/timeline" element={<Timeline />} />
             <Route path="/gallery" element={<Gallery />} />
