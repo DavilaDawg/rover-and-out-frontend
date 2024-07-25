@@ -17,7 +17,7 @@ const Home = () => {
           Rover&Out
         </h1>
         <p className="text-lg md:text-xl text-gray-300 mb-6">
-          Explore the Martian landscape like never before with our cutting-edge
+          Explore the Martian landscape like never before with this cutting-edge
           app.
         </p>
         <Button

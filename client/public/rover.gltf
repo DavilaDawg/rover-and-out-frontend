@@ -8504,31 +8504,31 @@
   ],
   "images": [
     {
-      "uri": "textures/tex_03_baseColor.png"
+      "uri": "textures1/tex_03_baseColor.png"
     },
     {
-      "uri": "textures/tex_03_normal.png"
+      "uri": "textures1/tex_03_normal.png"
     },
     {
-      "uri": "textures/tex_01_baseColor.png"
+      "uri": "textures1/tex_01_baseColor.png"
     },
     {
-      "uri": "textures/tex_02_baseColor.png"
+      "uri": "textures1/tex_02_baseColor.png"
     },
     {
-      "uri": "textures/tex_05_baseColor.png"
+      "uri": "textures1/tex_05_baseColor.png"
     },
     {
-      "uri": "textures/tex_04_baseColor.png"
+      "uri": "textures1/tex_04_baseColor.png"
     },
     {
-      "uri": "textures/parts_AO_baseColor.png"
+      "uri": "textures1/parts_AO_baseColor.png"
     },
     {
-      "uri": "textures/parts_AO_metallicRoughness.png"
+      "uri": "textures1/parts_AO_metallicRoughness.png"
     },
     {
-      "uri": "textures/tex_03_n_normal.png"
+      "uri": "textures1/tex_03_n_normal.png"
     }
   ],
   "materials": [
