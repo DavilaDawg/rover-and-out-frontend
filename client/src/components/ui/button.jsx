@@ -47,4 +47,4 @@ const Button = React.forwardRef(
 // Set display name for the Button component
 Button.displayName = "Button";
 
-export { Button, buttonVariants };
+export { Button, buttonVariants};
