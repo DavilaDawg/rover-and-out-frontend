@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
 
 const Home = () => {
-
   // Navigation:
   const navigate = useNavigate();
 
@@ -86,6 +85,56 @@ const Home = () => {
             alt="Rover"
           />
         </div>
+      </section>
+
+      <section className="py-16 px-8 md:px-12">
+        <p className="text-3xl md:text-4xl text-white mb-8 font-semibold text-center">
+          Technologies and Libraries:
+        </p>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            React
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Javascript
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Express
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Mongoose
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            MongoDB
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Vite
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Vercel
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Render.js
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Axios
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Postman
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Tailwind
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Shadcn/ui
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            3Js
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            FiberJs
+          </li>
+        </ul>
       </section>
 
       <section className="bg-gray-700 py-12 px-8 md:px-12 mt-12 rounded-lg shadow-lg border border-gray-600">

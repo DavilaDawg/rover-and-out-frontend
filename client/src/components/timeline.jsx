@@ -9,10 +9,15 @@ const Timeline = () => {
     navigate("/dashboard");
   }
 
+  function handleGallery() {
+    navigate("/dayGallery");
+  }
+
   return (
     <div>
-      <h1>TimeLine works</h1>
+      <h1>TimeLine</h1>
       <Button onClick={handleBack}>Back</Button>
+      <Button onClick={handleGallery}>DayGallery</Button>
     </div>
   );
 };
