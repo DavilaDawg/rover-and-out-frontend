@@ -7,27 +7,90 @@ Source: https://sketchfab.com/3d-models/curiosity-mars-rover-6cab1b08f20a4408960
 Title: Curiosity Mars rover
 */
 
-import React from 'react'
-import { useGLTF } from '@react-three/drei'
+import React from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useGLTF } from "@react-three/drei";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Rover2 = (props) => {
-  const { nodes, materials } = useGLTF('/rover2.gltf')
+  const { nodes, materials } = useGLTF("/rover2.gltf");
+  const [filterRear, setFilterRear] = useState(false);
+  const [filterProb, setFilterProb] = useState(false);
+  const [filterNav, setFilterNav] = useState(false);
+
+  const navigate = useNavigate();
+
+  function handleRear() {
+    toast.info("Rear Hazard Avoidance Camera selected", {
+      position: "top-right",
+      autoClose: 1000, // [ms]
+    });
+    setFilterRear(true);
+    setTimeout(() => {
+      navigate("/gallery/filterRear");
+      setFilterRear(false); // Optionally reset the filter after navigation
+    }, 1600); // 3000 milliseconds = 3 seconds
+  }
+
+  function handleProb() {
+    toast.info("Prob Camera Selected", {
+      position: "top-right",
+      autoClose: 1000,
+    });
+    setFilterProb(true);
+    setTimeout(() => {
+      navigate("/gallery/filterProb");
+      setFilterProb(false);
+    }, 1600);
+  }
+
+  function handleNav() {
+    toast.info("Nav Camera Selected", {
+      position: "top-right",
+      autoClose: 1000,
+    });
+    setFilterNav(true);
+    setTimeout(() => {
+      navigate("/gallery/filterNav");
+      setFilterNav(true);
+    }, 1600);
+  }
 
   return (
     <group {...props} dispose={null}>
       <group position={[1.063, 0.249, 1.095]}>
-        <mesh   geometry={nodes.Object_4.geometry} material={materials.wheels} />
-        <mesh   geometry={nodes.Object_5.geometry} material={materials.tex_02} />
-        <mesh   geometry={nodes.Object_6.geometry} material={materials.tex_01} />
-        <mesh   onClick={() => alert('Rear Hazard Avoidance Camera!')} geometry={nodes.Object_7.geometry} material={materials.parts_AO} />
-        <mesh   onClick={() => alert('Prob clicked')} geometry={nodes.Object_8.geometry} material={materials.tex_03} />
-        <mesh   geometry={nodes.Object_9.geometry} material={materials.tex_05} />
-        <mesh   onClick={() => alert('NavCam clicked!')} geometry={nodes.Object_10.geometry} material={materials.tex_04} />
-        <mesh   geometry={nodes.Object_11.geometry} material={materials.tex_03a} />
-        <mesh  geometry={nodes.Object_12.geometry} material={materials.internals} />
+        <mesh geometry={nodes.Object_4.geometry} material={materials.wheels} />
+        <mesh geometry={nodes.Object_5.geometry} material={materials.tex_02} />
+        <mesh geometry={nodes.Object_6.geometry} material={materials.tex_01} />
+        <mesh
+          onClick={handleRear}
+          geometry={nodes.Object_7.geometry}
+          material={materials.parts_AO}
+        />
+        <mesh
+          onClick={handleProb}
+          geometry={nodes.Object_8.geometry}
+          material={materials.tex_03}
+        />
+        <mesh geometry={nodes.Object_9.geometry} material={materials.tex_05} />
+        <mesh
+          onClick={handleNav}
+          geometry={nodes.Object_10.geometry}
+          material={materials.tex_04}
+        />
+        <mesh
+          geometry={nodes.Object_11.geometry}
+          material={materials.tex_03a}
+        />
+        <mesh
+          geometry={nodes.Object_12.geometry}
+          material={materials.internals}
+        />
       </group>
     </group>
-  )
-}
+  );
+};
 
-useGLTF.preload('/rover2.gltf')
+useGLTF.preload("/rover2.gltf");

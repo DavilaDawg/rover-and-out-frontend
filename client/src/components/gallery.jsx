@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { Button } from '@/components/ui/button.jsx';
-import { getNasaInfo } from '../services/galleryService';
+import { getNasaInfo } from '../services/galleryService'; // after moving fetchImagesAndManifest to server wont need this here anymore
+import { getManifestInfo } from '../services/galleryService';
 
-const Gallery = () => {
+
+const CamGallery = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [sol, setSol] = useState(0);
+  const [submittedSol, setSubmittedSol] = useState(null);
   const [images, setImages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalPhotos, setTotalPhotos] = useState(0);
   const imagesPerPage = 25;
 
-  const fetchImagesAndManifest = async () => {
+  const { camToFilter } = useParams(); // Retrieving the URL parameter
+
+
+  const fetchImagesAndManifest = async () => { // put in getManiofest??
     setLoading(true);
 
     try {
@@ -41,8 +48,9 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    fetchImagesAndManifest();
-  }, [sol, currentPage]);
+    //fetchImagesAndManifest(); 
+    getManifestInfo()
+  }, [submittedSol, currentPage]);
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -62,9 +70,14 @@ const Gallery = () => {
     }
   };
 
+  const handleSubmit = () => {
+    setSubmittedSol(sol);
+  }
+
   return (
     <div className="w-full min-h-screen p-4 bg-gray-800 text-white">
       <h1 className="text-xl font-bold text-center mb-4">Gallery</h1>
+      <p>{camToFilter}</p>
 
       <div className="flex justify-center mb-4">
         <label htmlFor="sol" className="mr-2">
@@ -78,6 +91,12 @@ const Gallery = () => {
           min="0"
           className="w-24 px-2 py-1 border border-gray-600 rounded bg-gray-700 text-white"
         />
+        <button
+          onClick={handleSubmit}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+        >
+          Submit
+        </button>
       </div>
 
       {loading && <p className="text-center">Loading images...</p>}
@@ -122,4 +141,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default CamGallery;

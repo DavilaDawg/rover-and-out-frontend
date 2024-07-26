@@ -134,6 +134,9 @@ const Home = () => {
             Shadcn/ui
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
+            Material UI components
+          </li>
+          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
             3Js
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">

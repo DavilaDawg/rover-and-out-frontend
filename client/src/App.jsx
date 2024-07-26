@@ -1,9 +1,12 @@
 import "@/App.css";
-import '@/index.css'; 
+import "@/index.css";
 
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ThemeProvider } from "@/components/theme-provider"; 
+import { ThemeProvider } from "@/components/theme-provider";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Home from "@/components/home.jsx";
 import MyLogin from "@/components/login.jsx";
@@ -13,25 +16,39 @@ import Gallery from "@/components/gallery.jsx";
 import Graphs from "@/components/graphs.jsx";
 import AnnotatedGallery from "@/components/annotatedGallery.jsx";
 import ImageViewer from "@/components/imageViewer.jsx";
-import DayGallery from "@/components/dayGallery.jsx";
+import SelectCamPage from "@/components/selectCamPage";
 
 function App() {
   return (
     <>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<MyLogin />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/timeline" element={<Timeline />} />
-            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery/:filter" element={<Gallery />} />
             <Route path="/graphs" element={<Graphs />} />
             <Route path="/annotated" element={<AnnotatedGallery />} />
             <Route path="/imageViewer" element={<ImageViewer />} />
-            <Route path="/dayGallery" element={<DayGallery />} />
+            <Route path="/selectCamPage" element={<SelectCamPage />} />
           </Routes>
         </Router>
+        
       </ThemeProvider>
     </>
   );

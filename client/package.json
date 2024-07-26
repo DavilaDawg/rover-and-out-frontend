@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/lab": "^5.0.0-alpha.173",
+    "@mui/material": "^5.16.5",
     "@radix-ui/react-slot": "^1.1.0",
     "@react-three/drei": "^9.109.2",
     "@react-three/fiber": "^8.16.8",
@@ -18,6 +22,7 @@
     "react-dom": "^18.3.1",
     "react-login-page": "^1.0.4",
     "react-router-dom": "^6.25.1",
+    "react-toastify": "^10.0.5",
     "three": "^0.167.0"
   },
   "devDependencies": {
