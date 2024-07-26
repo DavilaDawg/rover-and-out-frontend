@@ -7,7 +7,7 @@ const AnnotatedGallery = () => {
   const navigate = useNavigate();
 
   function handleBack() {
-    navigate("/gallery");
+    navigate("/gallery/:filter");
   }
 
   return (

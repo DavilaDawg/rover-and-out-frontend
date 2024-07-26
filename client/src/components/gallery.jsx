@@ -12,11 +12,20 @@ const Gallery = () => {
   const [loading, setLoading] = useState(true);
   const [sol, setSol] = useState(0);
   const [submittedSol, setSubmittedSol] = useState(null);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState([]); // arr of urls 
   const [totalPhotos, setTotalPhotos] = useState(0);
 
 
   const { camToFilter } = useParams(); // Retrieving the URL parameter
+
+  //Navigation: 
+  function handleBack() {
+    navigate("/selectCamPage");
+  }
+
+  function navigateAnnotated() {
+    navigate("/annotated");
+  }
 
   async function get() {
     setLoading(true);
@@ -29,7 +38,7 @@ const Gallery = () => {
         console.log('API result:', result.data)
         const urls = result.data.photos.map((img) => img.img_src);
         setImages(urls);
-        setTotalPhotos(result.total_photos);
+        setTotalPhotos(result.data.total_photos);
         setError(null);
       } else {
         setImages([]);
@@ -48,8 +57,7 @@ const Gallery = () => {
     get()
   }, [submittedSol]);
 
-  const handleSubmit = () => {
-    console.log("submitted: ", sol)
+  const handleSubmit = () => { // on submit the total pics should be shown!!!! FIXXXXXXXXXXXXXXXXXXXXXxxxx
     setSubmittedSol(sol);
   }
 
@@ -59,7 +67,7 @@ const Gallery = () => {
       <p>{camToFilter}</p>
 
       <div className="flex justify-center mb-4">
-        <label htmlFor="sol" className="mr-2">
+        <label htmlFor="sol" className="mr-2 mt-2">
           Sol:
         </label>
         <input
@@ -72,31 +80,46 @@ const Gallery = () => {
         />
         <button
           onClick={handleSubmit}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors ml-2"
         >
           Submit
         </button>
       </div>
 
-      {loading && <p className="text-center">Loading images...</p>}
+      <div className="flex justify-center mt-4 space-x-2">
+        <Button
+          onClick={handleBack}
+          className="bg-gray-600 text-gray-300 py-1 px-3 rounded hover:bg-gray-600 transition-colors"
+        >
+          Back
+        </Button>
+        <Button
+          onClick={navigateAnnotated}
+          className="bg-gray-600 text-gray-300 py-1 px-3 rounded hover:bg-gray-600 transition-colors"
+        >
+          View all annotated
+        </Button>
+      </div>
 
-      {error && <p className="text-center text-red-400">{error}</p>}
+      {loading && <p className="text-center mt-2">Loading images...</p>}
+
+      {error && <p className="text-center text-red-400 mt-2">{error}</p>}
 
       {!loading && !error && (
         <>
-          <p className="text-center">Total Photos for Sol {sol}: {totalPhotos}</p>
+          <p className="text-center mt-2 mb-2">Total Photos for Sol {sol}: {totalPhotos}</p>
 
           <div className="flex flex-wrap justify-center gap-4">
             {images.length > 0 ? (
-              images.map((image) => (
+              images.map((image,index) => (
                 <button
-                  key={image.id}
+                  key={index}
                   className="border border-gray-600 rounded overflow-hidden"
-                  onClick={() => navigate('/imageViewer', { state: { imageUrl: image.img_src } })}
+                  onClick={() => navigate('/imageViewer', { state: { imageUrl: image } })} //image is url 
                 >
                   <img
-                    src={image.img_src}
-                    alt={`Mars Rover Image ${image.id}`}
+                    src={image}
+                    alt={`Mars Rover Image ${index}`}
                     className="w-60 h-48 object-cover"
                   />
                 </button>

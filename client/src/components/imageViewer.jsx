@@ -7,12 +7,15 @@ const ImageViewer = () => {
   const navigate = useNavigate();
 
   function handleBack() {
-    navigate("/gallery");
+    navigate("/gallery/:filter");
   }
+//<p>Day: {sol}</p>
+//<p>Camera: {camera} </p>
 
   return (
     <div>
       <h1>ImageViewer</h1>
+      
       <Button onClick={handleBack}>Back</Button>
     </div>
   );
