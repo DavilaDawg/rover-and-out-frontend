@@ -21,34 +21,7 @@ const CamGallery = () => {
   const { camToFilter } = useParams(); // Retrieving the URL parameter
 
 
-  const fetchImagesAndManifest = async () => { // put in getManiofest??
-    setLoading(true);
-
-    try {
-      // Fetch images and manifest
-      const result = await getNasaInfo(sol, currentPage);
-      console.log('API result:', result);
-
-      if (result.success) {
-        setImages(result.data);
-        setTotalPhotos(result.total_images);
-        setTotalPages(result.total_pages);
-        setError(null);
-      } else {
-        setImages([]);
-        setError(result.error || 'An unexpected error occurred in service.');
-      }
-    } catch (error) {
-      console.error('Unexpected error in client:', error);
-      setImages([]);
-      setError('An unexpected error occurred in client.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    //fetchImagesAndManifest(); 
     getManifestInfo()
   }, [submittedSol, currentPage]);
 

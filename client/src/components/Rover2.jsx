@@ -60,7 +60,7 @@ export const Rover2 = (props) => {
 
   return (
     <group {...props} dispose={null}>
-      <group position={[1.063, 0.249, 1.095]}>
+      <group position={[1.063, -0.7, 0.72]}>
         <mesh geometry={nodes.Object_4.geometry} material={materials.wheels} />
         <mesh geometry={nodes.Object_5.geometry} material={materials.tex_02} />
         <mesh geometry={nodes.Object_6.geometry} material={materials.tex_01} />
