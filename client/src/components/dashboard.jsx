@@ -22,7 +22,7 @@ const Dashboard = () => {
   }
 
   function handleGallery() {
-    navigate("/gallery");
+    navigate("/boringGallery");
   }
 
   return (

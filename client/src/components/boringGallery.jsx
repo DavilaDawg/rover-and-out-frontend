@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button.jsx";
 import { getNasaInfo } from "../services/galleryService"; // after moving fetchImagesAndManifest to server wont need this here anymore
 import { getManifestInfo } from "../services/galleryService";
 
-const Gallery = () => {
+const BoringGallery = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -14,12 +14,9 @@ const Gallery = () => {
   const [images, setImages] = useState([]); // arr of urls
   const [totalPhotos, setTotalPhotos] = useState(0);
 
-  const { camToFilter } = useParams(); // Retrieving the URL parameter
-  console.log(camToFilter)
-
   //Navigation:
   function handleBack() {
-    navigate("/selectCamPage");
+    navigate("/dashboard");
   }
 
   function navigateAnnotated() {
@@ -34,15 +31,9 @@ const Gallery = () => {
       const result = await getNasaInfo(sol);
 
       if (result.success) {
-        console.log("API result:", result.data);
-
-        const filteredPhotos = result.data.photos.filter((photo) =>
-          photo.camera.name.includes(camToFilter)
-        );
-
-        const urls = filteredPhotos.map((img) => img.img_src);
+        const urls = result.data.photos.map((img) => img.img_src);
         setImages(urls);
-        setTotalPhotos(filteredPhotos.length);
+        setTotalPhotos(result.data.photos.length);
         setError(null);
       } else {
         setImages([]);
@@ -69,7 +60,6 @@ const Gallery = () => {
   return (
     <div className="w-full min-h-screen p-4 bg-gray-800 text-white">
       <h1 className="text-xl font-bold text-center mb-4">Gallery</h1>
-      <p className="text-center mb-4">Camera Type: {camToFilter}</p>
 
       <div className="flex justify-center mb-4">
         <label htmlFor="sol" className="mr-2 mt-2">
@@ -145,4 +135,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default BoringGallery;

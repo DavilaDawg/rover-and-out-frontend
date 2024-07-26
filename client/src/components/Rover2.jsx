@@ -29,7 +29,7 @@ export const Rover2 = (props) => {
     });
     setFilterRear(true);
     setTimeout(() => {
-      navigate("/gallery/filterRear");
+      navigate("/gallery/RHAZ");
       setFilterRear(false); // Optionally reset the filter after navigation
     }, 1600); // 3000 milliseconds = 3 seconds
   }
@@ -41,7 +41,7 @@ export const Rover2 = (props) => {
     });
     setFilterProb(true);
     setTimeout(() => {
-      navigate("/gallery/filterProb");
+      navigate("/gallery/MAHLI");
       setFilterProb(false);
     }, 1600);
   }
@@ -53,7 +53,7 @@ export const Rover2 = (props) => {
     });
     setFilterNav(true);
     setTimeout(() => {
-      navigate("/gallery/filterNav");
+      navigate("/gallery/NAVCAM");
       setFilterNav(true);
     }, 1600);
   }
