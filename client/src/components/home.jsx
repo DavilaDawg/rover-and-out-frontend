@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-900 text-gray-100">
       <section className="flex flex-col items-center justify-center py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black rounded-b-lg shadow-lg">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+        <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold text-white mb-4">
           Rover&Out
         </h1>
         <p className="text-lg md:text-xl text-gray-300 mb-6">
@@ -21,7 +21,7 @@ const Home = () => {
           app.
         </p>
         <Button
-          className="bg-indigo-600 text-white hover:bg-indigo-700 transition-all duration-300 rounded-full px-8 py-4 shadow-lg"
+          className="bg-indigo-600 text-white hover:bg-indigo-700 transition-all duration-300 rounded-full px-10 py-7 shadow-lg text-xl"
           onClick={handleClick}
         >
           Login
@@ -80,8 +80,13 @@ const Home = () => {
       <section className="py-16 px-8 md:px-12">
         <div className="flex justify-center">
           <img
-            className="h-[40rem] w-[51rem] object-cover rounded-lg shadow-lg"
+            className="h-[40rem] w-[51rem] object-cover rounded-lg"
             src="rover.jpg"
+            alt="Rover"
+          />
+          <img
+            className="h-[40rem] w-[51rem] object-cover rounded-lg ml-20"
+            src="homeImg.png"
             alt="Rover"
           />
         </div>
@@ -137,12 +142,12 @@ const Home = () => {
         </ul>
       </section>
 
-      <section className="bg-gray-700 py-12 px-8 md:px-12 mt-12 rounded-lg shadow-lg border border-gray-600">
+      <section className="bg-gray-700 py-12 px-8 md:px-12 mt-12 rounded-lg shadow-lg border border-gray-600 mr-12 ml-12 mb-12">
         <h2 className="text-3xl font-bold text-white mb-6">Contact Me</h2>
         <p className="text-lg text-gray-300 mb-4">
-          Feel free to reach out to me via email or use the form below to get in
-          touch. I'm always open to discussing projects, opportunities, or just
-          having a chat!
+          I'm always open to discussing projects, opportunities, or just having
+          a chat! Feel free to use the form below or you can contact me directly
+          at idavila2021@gmail.com. I am looking forward to hearing from you!
         </p>
         <form
           action="https://formspree.io/f/your-form-id" // Replace with form service endpoint
