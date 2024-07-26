@@ -7,45 +7,37 @@ export const ModelViewer = () => {
   return (
     <div style={{ height: '100vh', width: '100vw' }}>
       <Canvas camera={{ fov: 70, position: [0, 0, 5] }}>
-        {/* Ambient Light for overall illumination */}
-        <ambientLight intensity={1} /> {/* Increase intensity for more light */}
+
+        {/* Lighing: */}
+        <ambientLight intensity={1} />
         
-        {/* Directional Light to simulate sunlight */}
         <directionalLight 
           position={[10, 10, 10]} 
-          intensity={2} // Increased intensity for brighter light
-          castShadow 
-          shadow-mapSize-width={2048} // Increase shadow map size for better shadows
-          shadow-mapSize-height={2048} 
+          intensity={2}
         />
         
-        {/* Point Light for additional illumination */}
         <pointLight 
           position={[-10, -10, 10]} 
-          intensity={1} // Increased intensity for more light
-          decay={2} // Makes light falloff more gradual
+          intensity={1}
         />
         
-        {/* Spotlight for focused lighting */}
         <spotLight 
           position={[0, 10, 10]} 
           angle={0.4} // Increased angle for a wider cone of light
           penumbra={1} 
-          intensity={2} // Increased intensity for more light
-          castShadow 
+          intensity={2} 
         />
         
-        {/* Additional Point Light at the back for enhanced illumination */}
+        {/* Light at the back for enhanced illumination */}
         <pointLight 
-          position={[0, 0, -10]} // Positioned behind the model
-          intensity={1.5} // Increased intensity for more light
-          decay={2} // Makes light falloff more gradual
+          position={[0, 0, -10]} 
+          intensity={1.5} 
         />
 
         <Suspense fallback={<div>Loading model...</div>}>
           <Rover2 scale={1.5} />
         </Suspense>
-        
+
         <OrbitControls />
       </Canvas>
     </div>

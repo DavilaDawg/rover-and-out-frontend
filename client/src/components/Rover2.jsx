@@ -12,18 +12,19 @@ import { useGLTF } from '@react-three/drei'
 
 export const Rover2 = (props) => {
   const { nodes, materials } = useGLTF('/rover2.gltf')
+
   return (
     <group {...props} dispose={null}>
       <group position={[1.063, 0.249, 1.095]}>
-        <mesh geometry={nodes.Object_4.geometry} material={materials.wheels} />
-        <mesh geometry={nodes.Object_5.geometry} material={materials.tex_02} />
-        <mesh geometry={nodes.Object_6.geometry} material={materials.tex_01} />
-        <mesh geometry={nodes.Object_7.geometry} material={materials.parts_AO} />
-        <mesh geometry={nodes.Object_8.geometry} material={materials.tex_03} />
-        <mesh geometry={nodes.Object_9.geometry} material={materials.tex_05} />
-        <mesh geometry={nodes.Object_10.geometry} material={materials.tex_04} />
-        <mesh geometry={nodes.Object_11.geometry} material={materials.tex_03a} />
-        <mesh geometry={nodes.Object_12.geometry} material={materials.internals} />
+        <mesh   geometry={nodes.Object_4.geometry} material={materials.wheels} />
+        <mesh   geometry={nodes.Object_5.geometry} material={materials.tex_02} />
+        <mesh   geometry={nodes.Object_6.geometry} material={materials.tex_01} />
+        <mesh   onClick={() => alert('Rear Hazard Avoidance Camera!')} geometry={nodes.Object_7.geometry} material={materials.parts_AO} />
+        <mesh   onClick={() => alert('Prob clicked')} geometry={nodes.Object_8.geometry} material={materials.tex_03} />
+        <mesh   geometry={nodes.Object_9.geometry} material={materials.tex_05} />
+        <mesh   onClick={() => alert('NavCam clicked!')} geometry={nodes.Object_10.geometry} material={materials.tex_04} />
+        <mesh   geometry={nodes.Object_11.geometry} material={materials.tex_03a} />
+        <mesh  geometry={nodes.Object_12.geometry} material={materials.internals} />
       </group>
     </group>
   )
