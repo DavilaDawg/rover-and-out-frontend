@@ -6,44 +6,50 @@ import { getNasaInfo } from '../services/galleryService'; // after moving fetchI
 import { getManifestInfo } from '../services/galleryService';
 
 
-const CamGallery = () => {
+const Gallery = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [sol, setSol] = useState(0);
   const [submittedSol, setSubmittedSol] = useState(null);
   const [images, setImages] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [totalPhotos, setTotalPhotos] = useState(0);
-  const imagesPerPage = 25;
+
 
   const { camToFilter } = useParams(); // Retrieving the URL parameter
 
+  async function get() {
+    setLoading(true);
+
+    try {
+      //const info = await getManifestInfo(sol);
+      const result = await getNasaInfo(sol)
+
+      if (result.success) {
+        console.log('API result:', result.data)
+        const urls = result.data.photos.map((img) => img.img_src);
+        setImages(urls);
+        setTotalPhotos(result.total_photos);
+        setError(null);
+      } else {
+        setImages([]);
+        setError(result.error || 'An unexpected error occurred in service.');
+      }
+    } catch (error) {
+      console.error('Unexpected error in client:', error);
+      setImages([]);
+      setError('An unexpected error occurred in client.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    getManifestInfo()
-  }, [submittedSol, currentPage]);
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(prevPage => prevPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(prevPage => prevPage + 1);
-    }
-  };
-
-  const handlePageSelect = (pageNumber) => {
-    if (pageNumber > 0 && pageNumber <= totalPages) {
-      setCurrentPage(pageNumber);
-    }
-  };
+    get()
+  }, [submittedSol]);
 
   const handleSubmit = () => {
+    console.log("submitted: ", sol)
     setSubmittedSol(sol);
   }
 
@@ -99,19 +105,10 @@ const CamGallery = () => {
               <p className="text-center col-span-full">No images available for this sol.</p>
             )}
           </div>
-
-          <div className="flex justify-center mt-4 space-x-2">
-            <Button onClick={handlePreviousPage} className="bg-blue-600 text-white py-1 px-3 rounded">
-              Previous
-            </Button>
-            <Button onClick={handleNextPage} className="bg-blue-600 text-white py-1 px-3 rounded">
-              Next
-            </Button>
-          </div>
         </>
       )}
     </div>
   );
 };
 
-export default CamGallery;
+export default Gallery;
