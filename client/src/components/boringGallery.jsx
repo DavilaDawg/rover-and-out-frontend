@@ -59,7 +59,7 @@ const BoringGallery = () => {
 
   const handleInspect = (image) => {
     navigate("/imageViewer", {
-      state: { imageUrl: image, isBoring: true , previousSol: sol},
+      state: { imageUrl: image, isBoring: true , sol: sol},
     });
   };
 

@@ -22,7 +22,7 @@ const ImageViewer = () => {
     const path = isBoring ? "/boringGallery" : `/gallery/${filter}`;
     navigate(path, { state: { sol } });
   }
-
+// camera needs to be conditional below 
   return (
     <div className="relative w-screen h-screen bg-gray-900">
       <Button

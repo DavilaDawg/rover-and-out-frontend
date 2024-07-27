@@ -125,7 +125,7 @@ const Gallery = () => {
                   onClick={
                     () =>
                       navigate("/imageViewer", {
-                        state: { imageUrl: image, isBoring: false , filter: camToFilter},
+                        state: { imageUrl: image, isBoring: false , sol: sol, filter: camToFilter},
                       }) // Image is url
                   }
                 >
