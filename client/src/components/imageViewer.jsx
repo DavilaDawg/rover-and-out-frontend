@@ -6,16 +6,19 @@ const ImageViewer = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { imageUrl, isBoring , filter , sol} = location.state || {};
+  const { imageUrl, isBoring , sol, filter} = location.state || {};
 
   if (!imageUrl) {
-    navigate(isBoring ? "/boringGallery" : `/gallery/${filter}/${sol}`);
+    //navigate( filter ? `/gallery/${filter}` : );
+    const path = isBoring ? "/boringGallery" : filter ? `/gallery/${filter}` : "/gallery";
+    navigate(path);
     return null;
   }
 
   // Handle back navigation
   function handleBack() {
-    navigate(isBoring ? "/boringGallery" : `/gallery/${filter}/${sol}`);
+    const path = isBoring ? "/boringGallery" : filter ? `/gallery/${filter}` : "/gallery";
+    navigate(path)
   }
 
   //<p>Day: {sol}</p>

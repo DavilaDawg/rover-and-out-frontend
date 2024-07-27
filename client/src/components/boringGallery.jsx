@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
-import { getNasaInfo } from "../services/galleryService"; 
+import { getNasaInfo } from "../services/galleryService";
 import { getManifestInfo } from "../services/galleryService";
 
 const BoringGallery = () => {
@@ -55,6 +55,12 @@ const BoringGallery = () => {
   const handleSubmit = () => {
     // on submit the total pics should be shown!!!! FIXXXXXXXXXXXXXXXXXXXXXxxxx
     setSubmittedSol(sol);
+  };
+
+  const handleInspect = (image) => {
+    navigate("/imageViewer", {
+      state: { imageUrl: image, isBoring: true , previousSol: sol},
+    });
   };
 
   return (
@@ -112,9 +118,7 @@ const BoringGallery = () => {
                 <button
                   key={index}
                   className="border border-gray-600 rounded overflow-hidden"
-                  onClick={() =>
-                    navigate("/imageViewer", { state: { imageUrl: image , isBoring: true} })
-                  } // Image is url
+                  onClick={() => handleInspect(image)} // Image is url
                 >
                   <img
                     src={image}
