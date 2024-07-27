@@ -15,7 +15,7 @@ const Gallery = () => {
   const [totalPhotos, setTotalPhotos] = useState(0);
 
   const { camToFilter } = useParams(); // Retrieving the URL parameter
-  console.log(camToFilter)
+  console.log(camToFilter);
 
   //Navigation:
   function handleBack() {
@@ -122,9 +122,12 @@ const Gallery = () => {
                 <button
                   key={index}
                   className="border border-gray-600 rounded overflow-hidden"
-                  onClick={() =>
-                    navigate("/imageViewer", { state: { imageUrl: image } })
-                  } //image is url
+                  onClick={
+                    () =>
+                      navigate("/imageViewer", {
+                        state: { imageUrl: image, isBoring: false , filter: camToFilter , sol},
+                      }) // Image is url
+                  }
                 >
                   <img
                     src={image}

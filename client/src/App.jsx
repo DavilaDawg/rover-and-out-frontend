@@ -42,12 +42,12 @@ function App() {
             <Route path="/login" element={<MyLogin />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/timeline" element={<Timeline />} />
-            <Route path="/gallery/:camToFilter" element={<Gallery />} />
+            <Route path="/gallery/:camToFilter/:sol" element={<Gallery />} />
+            <Route path="/boringGallery/:sol" element={<BoringGallery />} />
             <Route path="/graphs" element={<Graphs />} />
             <Route path="/annotated" element={<AnnotatedGallery />} />
             <Route path="/imageViewer" element={<ImageViewer />} />
             <Route path="/selectCamPage" element={<SelectCamPage />} />
-            <Route path="/boringGallery" element={<BoringGallery />} />
           </Routes>
         </Router>
 

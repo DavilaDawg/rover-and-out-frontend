@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
-import { getNasaInfo } from "../services/galleryService"; // after moving fetchImagesAndManifest to server wont need this here anymore
+import { getNasaInfo } from "../services/galleryService"; 
 import { getManifestInfo } from "../services/galleryService";
 
 const BoringGallery = () => {
@@ -113,8 +113,8 @@ const BoringGallery = () => {
                   key={index}
                   className="border border-gray-600 rounded overflow-hidden"
                   onClick={() =>
-                    navigate("/imageViewer", { state: { imageUrl: image } })
-                  } //image is url
+                    navigate("/imageViewer", { state: { imageUrl: image , isBoring: true} })
+                  } // Image is url
                 >
                   <img
                     src={image}

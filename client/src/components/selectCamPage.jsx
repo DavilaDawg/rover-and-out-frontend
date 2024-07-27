@@ -10,7 +10,7 @@ const SelectCamPage = () => {
     navigate("/timeline");
   }
 
-  // add button: Display directions
+  // add button to display directions
   return (
     <div>
       <h1 className="md:text-6xl">Select a camera</h1>

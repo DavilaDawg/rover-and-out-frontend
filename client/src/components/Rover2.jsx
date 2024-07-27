@@ -30,8 +30,8 @@ export const Rover2 = (props) => {
     setFilterRear(true);
     setTimeout(() => {
       navigate("/gallery/RHAZ");
-      setFilterRear(false); // Optionally reset the filter after navigation
-    }, 1600); // 3000 milliseconds = 3 seconds
+      setFilterRear(false); 
+    }, 1600); 
   }
 
   function handleProb() {
