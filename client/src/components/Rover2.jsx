@@ -25,37 +25,37 @@ export const Rover2 = (props) => {
   function handleRear() {
     toast.info("Rear Hazard Avoidance Camera selected", {
       position: "top-right",
-      autoClose: 1000, // [ms]
+      autoClose: 1500, // [ms]
     });
     setFilterRear(true);
     setTimeout(() => {
       navigate("/gallery/RHAZ");
       setFilterRear(false); 
-    }, 1600); 
+    }, 2200); 
   }
 
   function handleProb() {
-    toast.info("Prob Camera Selected", {
+    toast.info("Mars Hand Lens Imager selected", {
       position: "top-right",
-      autoClose: 1000,
+      autoClose: 1500,
     });
     setFilterProb(true);
     setTimeout(() => {
       navigate("/gallery/MAHLI");
       setFilterProb(false);
-    }, 1600);
+    }, 2200);
   }
 
   function handleNav() {
-    toast.info("Nav Camera Selected", {
+    toast.info("Navigation Camera selected", {
       position: "top-right",
-      autoClose: 1000,
+      autoClose: 1500,
     });
     setFilterNav(true);
     setTimeout(() => {
       navigate("/gallery/NAVCAM");
       setFilterNav(true);
-    }, 1600);
+    }, 2200);
   }
 
   return (
