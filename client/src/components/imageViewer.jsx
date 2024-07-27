@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // UseLocation hook allows you to access the state object that you passed when navigating
 import { Button } from "@/components/ui/button.jsx";
+import * as markerjs2 from "markerjs2";
 
 const ImageViewer = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const imgRef = useRef(null); // Ref to hold the image element
 
   const { imageUrl, isBoring, sol, filter } = location.state || {};
 
-  console.log("sol: ", sol)
-
+  // Navigation:
   if (!imageUrl) {
     //navigate( filter ? `/gallery/${filter}` : );
     const path = isBoring ? "/boringGallery" : `/gallery/${filter}`;
@@ -17,24 +18,47 @@ const ImageViewer = () => {
     return null;
   }
 
-  // Handle back navigation
   function handleBack() {
     const path = isBoring ? "/boringGallery" : `/gallery/${filter}`;
     navigate(path, { state: { sol } });
   }
-// camera needs to be conditional below 
+
+  // Annotation:
+  useEffect(() => {
+    if (imgRef.current) {
+      const markerArea = new markerjs2.MarkerArea(imgRef.current);
+      markerArea.addEventListener("render", (event) => {
+        imgRef.current.src = event.dataUrl;
+      });
+      markerArea.show();
+    }
+  }, [imageUrl]);
+
   return (
-    <div className="relative w-screen h-screen bg-gray-900">
-      <Button
-        onClick={handleBack}
-        className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded mr-5"
-      >
-        Back
-      </Button>
-      {filter ? <h1 className="text-6xl mb-3"> Sol: {sol}  Camera: {filter} </h1> : <h1 className="text-6xl mb-3"> Sol: {sol} </h1>}
-      
-      <img src={imageUrl} alt="Selected Mars Rover" className="w-full h-full" />
-    </div>
+    <>
+      <div className="mb-12 pb-1 bg-gray-900">
+        <Button
+          onClick={handleBack}
+          className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded mr-5"
+        >
+          Back
+        </Button>
+
+        {filter ? (
+          <h1 className="text-6xl mb-3">
+            Sol: {sol} Camera: {filter}
+          </h1>
+        ) : (
+          <h1 className="text-6xl"> Sol: {sol} </h1>
+        )}
+      </div>
+      <img
+        ref={imgRef}
+        src={imageUrl}
+        alt="Selected Mars Rover"
+        className="w-full h-full"
+      />
+    </>
   );
 };
 
