@@ -31,7 +31,8 @@ const ImageViewer = () => {
       >
         Back
       </Button>
-      <h1 className="text-6xl mb-3"> Sol: {sol}  Camera: {filter} </h1>
+      {filter ? <h1 className="text-6xl mb-3"> Sol: {sol}  Camera: {filter} </h1> : <h1 className="text-6xl mb-3"> Sol: {sol} </h1>}
+      
       <img src={imageUrl} alt="Selected Mars Rover" className="w-full h-full" />
     </div>
   );
