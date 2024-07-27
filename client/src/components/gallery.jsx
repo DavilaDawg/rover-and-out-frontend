@@ -67,7 +67,7 @@ const Gallery = () => {
   };
 
   return (
-    <div className="w-full min-h-screen p-4 bg-gray-800 text-white">
+    <div className="w-full min-h-screen p-4 text-white">
       <h1 className="text-xl font-bold text-center mb-4">Gallery</h1>
       <p className="text-center mb-4">Camera Type: {camToFilter}</p>
 

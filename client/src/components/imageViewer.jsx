@@ -51,6 +51,10 @@ const ImageViewer = () => {
     }
   }, [imageUrl, maState]);
 
+  function handleSave() {
+    console.log("saving")
+  }
+
   return (
     <>
       <div className="mb-12 pb-1 bg-gray-900">
@@ -68,6 +72,15 @@ const ImageViewer = () => {
         ) : (
           <h1 className="text-6xl ml-2"> Sol: {sol} </h1>
         )}
+      </div>
+
+      <div className=" bg-gray-900">
+        <button
+          onClick={handleSave}
+          className="absolute top-4 right-28 bg-gray-800 text-white px-4 py-2 rounded"
+        >
+          Save Image
+        </button>
       </div>
 
       <img

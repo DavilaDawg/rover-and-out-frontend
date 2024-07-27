@@ -28,9 +28,9 @@ export const getNasaInfo = async (sol = 1000) => {
   }
 };
 
-export const getManifestInfo = async (sol) => {
+export const getManifestInfo = async () => {
   try {
-    const response = await fetch(`${server_API_root}/api/info/${sol}`, {
+    const response = await fetch(`${server_API_root}/api/info`, {
       headers: {
         "Content-Type": "application/json",
       },
