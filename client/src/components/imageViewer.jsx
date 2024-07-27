@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // UseLocation hook allows you to access the state object that you passed when navigating
 import { Button } from "@/components/ui/button.jsx";
 import * as markerjs2 from "markerjs2";
@@ -9,10 +9,10 @@ const ImageViewer = () => {
   const imgRef = useRef(null); // Ref to hold the image element
 
   const { imageUrl, isBoring, sol, filter } = location.state || {};
+  const [annotatedImageUrl, setAnnotatedImageUrl] = useState(null);
 
   // Navigation:
   if (!imageUrl) {
-    //navigate( filter ? `/gallery/${filter}` : );
     const path = isBoring ? "/boringGallery" : `/gallery/${filter}`;
     navigate(path);
     return null;
@@ -28,11 +28,16 @@ const ImageViewer = () => {
     if (imgRef.current) {
       const markerArea = new markerjs2.MarkerArea(imgRef.current);
       markerArea.addEventListener("render", (event) => {
-        imgRef.current.src = event.dataUrl;
+        imgRef.current.src = event.dataUrl; // Updates the display of the annotated image directly in the img element
       });
       markerArea.show();
     }
   }, [imageUrl]);
+
+  function handleSave() {
+    setAnnotatedImageUrl(imgRef.current.src)
+    console.log(annotatedImageUrl)
+  }
 
   return (
     <>
@@ -49,8 +54,16 @@ const ImageViewer = () => {
             Sol: {sol} Camera: {filter}
           </h1>
         ) : (
-          <h1 className="text-6xl"> Sol: {sol} </h1>
+          <h1 className="text-6xl ml-2"> Sol: {sol} </h1>
         )}
+
+          <Button
+            onClick={handleSave}
+            className="absolute top-4 right-28 bg-gray-800 text-white px-4 py-2 rounded"
+          >
+            Save Image
+          </Button>
+
       </div>
       <img
         ref={imgRef}
