@@ -10,14 +10,18 @@ const ImageViewer = () => {
 
   if (!imageUrl) {
     //navigate( filter ? `/gallery/${filter}` : );
-    const path = isBoring ? "/boringGallery" : filter ? `/gallery/${filter}` : "/gallery";
+    const path = isBoring
+      ? "/boringGallery"
+      : `/gallery/${filter}`;
     navigate(path);
     return null;
   }
 
   // Handle back navigation
   function handleBack() {
-    const path = isBoring ? "/boringGallery" : filter ? `/gallery/${filter}` : "/gallery";
+    const path = isBoring
+      ? "/boringGallery"
+      : `/gallery/${filter}`;
     navigate(path)
   }
 
