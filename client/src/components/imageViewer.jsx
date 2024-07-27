@@ -6,27 +6,22 @@ const ImageViewer = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { imageUrl, isBoring , sol, filter} = location.state || {};
+  const { imageUrl, isBoring, sol, filter } = location.state || {};
+
+  console.log("sol: ", sol)
 
   if (!imageUrl) {
     //navigate( filter ? `/gallery/${filter}` : );
-    const path = isBoring
-      ? "/boringGallery"
-      : `/gallery/${filter}`;
+    const path = isBoring ? "/boringGallery" : `/gallery/${filter}`;
     navigate(path);
     return null;
   }
 
   // Handle back navigation
   function handleBack() {
-    const path = isBoring
-      ? "/boringGallery"
-      : `/gallery/${filter}`;
-    navigate(path)
+    const path = isBoring ? "/boringGallery" : `/gallery/${filter}`;
+    navigate(path, { state: { sol } });
   }
-
-  //<p>Day: {sol}</p>
-  //<p>Camera: {camera} </p>
 
   return (
     <div className="relative w-screen h-screen bg-gray-900">
@@ -36,12 +31,8 @@ const ImageViewer = () => {
       >
         Back
       </Button>
-      <h1 className= "text-6xl mb-3"> Day: {sol} </h1>
-      <img
-        src={imageUrl}
-        alt="Selected Mars Rover"
-        className="w-full h-full"
-      />
+      <h1 className="text-6xl mb-3"> Sol: {sol}  Camera: {filter} </h1>
+      <img src={imageUrl} alt="Selected Mars Rover" className="w-full h-full" />
     </div>
   );
 };
