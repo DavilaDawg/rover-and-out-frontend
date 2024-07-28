@@ -39,6 +39,10 @@ const Gallery = () => {
     navigate("/annotated");
   }
 
+  function navigateDash() {
+    navigate("/dashboard");
+  }
+
   async function get() {
     setLoading(true);
 
@@ -87,6 +91,20 @@ const Gallery = () => {
         <p className= "text-3xl mt-1 ml-3">{camName}</p>
       </div>
       <p className = "flex justify-center text-lg rounded-md font-semibold mb-4">{cameraDetails}</p>
+
+      <Button
+          onClick={navigateDash}
+          className="absolute top-4 right-20 bg-gray-600 text-white px-4 py-2 rounded mr-5"
+        >
+          Dashboard
+        </Button>
+
+        <Button
+          onClick={handleBack}
+          className="absolute top-4 right-5 bg-gray-600 text-gray-300 rounded hover:bg-gray-600 transition-colors"
+        >
+          Back
+        </Button>
       
       <div className="flex justify-center mb-4">
         <label htmlFor="sol" className="mr-2 mt-2">
@@ -110,14 +128,8 @@ const Gallery = () => {
 
       <div className="flex justify-center mt-4 space-x-2">
         <Button
-          onClick={handleBack}
-          className="bg-gray-600 text-gray-300 py-1 px-3 rounded hover:bg-gray-600 transition-colors"
-        >
-          Back
-        </Button>
-        <Button
           onClick={navigateAnnotated}
-          className="bg-gray-600 text-gray-300 py-1 px-3 rounded hover:bg-gray-600 transition-colors"
+          className="bg-gray-600 text-gray-300 py-1 px-14 rounded hover:bg-gray-600 transition-colors"
         >
           View all annotated
         </Button>

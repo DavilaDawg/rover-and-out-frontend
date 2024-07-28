@@ -7,15 +7,10 @@ const SelectCamPage = () => {
   // Navigation:
   const navigate = useNavigate();
 
-  function handleBack() {
-    navigate("/timeline");
-  }
-
   function navigateDash() {
     navigate("/dashboard");
   }
 
-  // add button to display directions
   return (
     <div>
       <h1 className="md:text-6xl ml-5 mt-3">Select a camera</h1>

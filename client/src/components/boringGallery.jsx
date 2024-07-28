@@ -87,18 +87,19 @@ const BoringGallery = () => {
         </button>
       </div>
 
-      <div className="flex justify-center mt-4 space-x-2">
-        <Button
+      <Button
           onClick={handleBack}
-          className="bg-gray-600 text-gray-300 py-1 px-3 rounded hover:bg-gray-600 transition-colors"
+          className="absolute top-4 right-4 bg-gray-600 text-gray-300 rounded hover:bg-gray-600 transition-colors"
         >
           Back
         </Button>
+
+      <div className="flex justify-center mt-4 space-x-2">
         <Button
           onClick={navigateAnnotated}
-          className="bg-gray-600 text-gray-300 py-1 px-3 rounded hover:bg-gray-600 transition-colors"
+          className="bg-gray-600 text-gray-300 py-1 px-14 rounded hover:bg-gray-600 transition-colors"
         >
-          View all annotated
+          View annotated
         </Button>
       </div>
 

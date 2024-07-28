@@ -24,6 +24,10 @@ const ImageViewer = () => {
     navigate(path, { state: { sol } });
   }
 
+  function navigateDash() {
+    navigate("/dashboard");
+  }
+
   useEffect(() => {
     if (imgRef.current) {
       const sourceImage = imgRef.current;
@@ -63,6 +67,12 @@ const ImageViewer = () => {
           className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded mr-5"
         >
           Back
+        </Button>
+        <Button
+          onClick={navigateDash}
+          className="absolute top-4 right-56 bg-gray-800 text-white px-4 py-2 rounded mr-5"
+        >
+          Dashboard
         </Button>
 
         {filter ? (

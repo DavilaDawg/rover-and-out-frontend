@@ -38,7 +38,7 @@ const Graphs = () => {
 
   const landingDate = info.landing_date;
   const launchDate = info.launch_date;
-  const maxSol = info.max_date; // Check significance!
+  const maxSol = info.max_sol; // Last sol with images in API
   const totalPhotos = info.total_photos;
 
   // Prepare data for the chart
@@ -100,6 +100,12 @@ const Graphs = () => {
                 Total Photos:
               </p>
               <p className="text-xl text-white">{totalPhotos}</p>
+            </div>
+            <div className="bg-gray-800 p-4 rounded-lg">
+              <p className="text-lg font-semibold text-gray-300">
+                Distance traveled:
+              </p>
+              <p className="text-xl text-white">19.96 miles / 32.12 km </p>
             </div>
           </div>
         </div>

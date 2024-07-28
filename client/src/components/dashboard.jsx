@@ -40,7 +40,7 @@ const Dashboard = () => {
             onClick={handleGraphs}
             className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"
           >
-            Super Cool Graphs
+            Super Cool Data
           </Button>
           <Button
             onClick={handleGallery}
