@@ -30,19 +30,21 @@ const Map = () => {
       <div className="relative pt-4">
         <img className="w-full h-auto" src="/roverPath.png" alt="Rover path" />
 
-        <Button
-          className="absolute left-1/2 top-44 ml-28 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded"
-          onClick={toLanding}
-        >
-          Bradbury Landing
-        </Button>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <Button
+            className="absolute top-40 ml-56 bg-gray-800 text-white px-4 py-2 rounded"
+            onClick={toLanding}
+          >
+            Bradbury Landing
+          </Button>
 
-        <Button
-          className="absolute left-1/2 top-96 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded"
-          onClick={toDrill}
-        >
-          Mary Anning & Grocken Drill Sites
-        </Button>
+          <Button
+            className="absolute top-2/3 mt-20 mr-14 bg-gray-800 text-white px-4 py-2 rounded"
+            onClick={toDrill}
+          >
+            Mary Anning & Grocken Drill Sites
+          </Button>
+        </div>
       </div>
     </div>
   );

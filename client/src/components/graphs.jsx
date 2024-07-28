@@ -65,7 +65,13 @@ const Graphs = () => {
         </Button>
       </div>
 
-      <div className="flex justify-center items-center p-6 mt-10">
+      <div className="flex justify-center items-center mt-10">
+        <div className="w-full max-w-screen-4xl h-[1000px] ml-60 mt-10">
+          <Bar data={chartData} />
+        </div>
+      </div>
+
+      <div className="flex justify-center items-center p-6 mt-10 pb-20">
         <div className="bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md">
           <h2 className="text-2xl font-bold text-white mb-6">
             Curiosity Rover Details
@@ -108,12 +114,6 @@ const Graphs = () => {
               <p className="text-xl text-white">19.96 miles / 32.12 km </p>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="flex justify-center items-center">
-        <div className="w-full max-w-screen-4xl h-[1000px] ml-60 mb-10">
-          <Bar data={chartData} />
         </div>
       </div>
     </>
