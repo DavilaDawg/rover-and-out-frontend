@@ -23,15 +23,15 @@ export const Rover2 = (props) => {
   const navigate = useNavigate();
 
   function handleRear() {
-    toast.info("Rear Hazard Avoidance Camera selected", {
+    toast.info("Rover Hazard Avoidance Camera selected", {
       position: "top-right",
       autoClose: 1500, // [ms]
     });
     setFilterRear(true);
     setTimeout(() => {
       navigate("/gallery/RHAZ");
-      setFilterRear(false); 
-    }, 2200); 
+      setFilterRear(false);
+    }, 2200);
   }
 
   function handleProb() {

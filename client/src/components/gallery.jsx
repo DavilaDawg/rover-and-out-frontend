@@ -15,7 +15,20 @@ const Gallery = () => {
   const [totalPhotos, setTotalPhotos] = useState(0);
 
   const { camToFilter } = useParams(); // Retrieving the URL parameter
-  console.log(camToFilter);
+
+  // Camera details for conditional rendering: 
+  let cameraDetails = "";
+  let camName = "";
+  if (camToFilter === "MAHLI") {
+    cameraDetails = "Microscopic Imaging of minerals, textures and structures in rocks and soil at scales smaller than the diameter of a human hair."
+    camName= "Mars Hand Lens Imager"
+  } else if (camToFilter === "NAVCAM") {
+    cameraDetails = "Captures high-resolution, wide-angle images to create 3D terrain maps, enabling autonomous navigation and obstacle avoidance for safe exploration."
+    camName = "Navigation Camera"
+  } else if (camToFilter === "RHAZ") {
+    cameraDetails = "Detects obstacles, ensuring safe navigation of the rover across the Martian surface."
+    camName= "Rover Hazard Avoidance Camera"
+  }
 
   //Navigation:
   function handleBack() {
@@ -68,9 +81,13 @@ const Gallery = () => {
 
   return (
     <div className="w-full min-h-screen p-4 text-white">
-      <h1 className="text-xl font-bold text-center mb-4">Gallery</h1>
-      <p className="text-center mb-4">Camera Type: {camToFilter}</p>
-
+      <h1 className="text-5xl font-bold">Gallery</h1>
+      <div className = "flex mt-3 justify-center">
+        <p className=" mb-4 text-4xl font-semibold">Camera:</p>
+        <p className= "text-3xl mt-1 ml-3">{camName}</p>
+      </div>
+      <p className = "flex justify-center text-lg rounded-md font-semibold mb-4">{cameraDetails}</p>
+      
       <div className="flex justify-center mb-4">
         <label htmlFor="sol" className="mr-2 mt-2">
           Sol:
@@ -126,7 +143,7 @@ const Gallery = () => {
                     () =>
                       navigate("/imageViewer", {
                         state: { imageUrl: image, isBoring: false , sol: sol, filter: camToFilter},
-                      }) // Image is url
+                      }) 
                   }
                 >
                   <img
