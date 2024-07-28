@@ -8,24 +8,13 @@ const SelectCamPage = () => {
   const navigate = useNavigate();
 
   function handleBack() {
-    navigate("/timeline");
-  }
-
-  function navigateDash() {
-    navigate("/dashboard");
+    navigate("/gallDash");
   }
 
   // add button to display directions
   return (
     <div>
       <h1 className="md:text-6xl ml-5 mt-3">Select a camera</h1>
-
-      <Button
-        onClick={navigateDash}
-        className="absolute top-4 right-24 bg-gray-800 text-white px-4 py-2 rounded mr-5"
-      >
-        Dashboard
-      </Button>
 
       <Button
         className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded mr-5"

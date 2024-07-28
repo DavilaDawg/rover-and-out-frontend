@@ -1,44 +1,51 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
-import { ModelViewer } from "./modelViewer";
 
-const SelectCamPage = () => {
+const GallDash = () => {
+
   // Navigation:
   const navigate = useNavigate();
 
-  function navigateDash() {
+  function handleBoring() {
+    navigate("/boringGallery");
+  }
+
+  function handleFilter() {
+    navigate("/selectCamPage");
+  }
+
+  function handleBack() {
     navigate("/dashboard");
   }
 
   return (
-    <div>
-      <h1 className="md:text-6xl ml-5 mt-3">Select a camera</h1>
-
-      <Button
-        onClick={navigateDash}
-        className="absolute top-4 right-24 bg-gray-800 text-white px-4 py-2 rounded mr-5"
-      >
-        Dashboard
-      </Button>
-
-      <Button
-        className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded mr-5"
-        onClick={handleBack}
-      >
-        Back
-      </Button>
-
-      <div className="ml-5 mt-5">
-        <p className= "md:text-2xl">Actions:</p>
-        <p>Rotate: Left-click and drag.</p>
-        <p>Zoom: Scroll the mouse wheel.</p>
-        <p>Pan: Right-click and drag or Shift + Left-click and drag.</p>
-        <p>Reset View: Double-click the left mouse button.</p>
+    <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col items-center justify-center flex-grow">
+        <div className="flex flex-col gap-10 mt-8">
+            <h1 className= "text-white text-5xl font-bold ml-6"> Select filter:</h1>
+          <Button
+            onClick={handleBoring}
+            className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"
+          >
+            Sol
+          </Button>
+          <Button
+            onClick={handleFilter}
+            className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"
+          >
+            Sol and camera
+          </Button>
+          <Button
+            onClick={handleBack}
+            className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"
+          >
+            Back
+          </Button>
+        </div>
       </div>
-      <ModelViewer></ModelViewer>
     </div>
   );
 };
 
-export default SelectCamPage;
+export default GallDash;

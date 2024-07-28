@@ -13,7 +13,7 @@ const Dashboard = () => {
     navigate("/");
   }
 
-  function handleTimeline() {
+  function handleMap() {
     navigate("/timeline");
   }
 
@@ -22,7 +22,7 @@ const Dashboard = () => {
   }
 
   function handleGallery() {
-    navigate("/boringGallery");
+    navigate("/gallDash");
   }
 
   return (
@@ -31,22 +31,23 @@ const Dashboard = () => {
         <ModeToggle />
         <div className="flex flex-col gap-10 mt-8">
           <Button
-            onClick={handleTimeline}
+            onClick={handleGallery}
             className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"
           >
-            Timeline
+            Gallery
           </Button>
+          <Button
+            onClick={handleMap}
+            className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"
+          >
+            Interactive Map
+          </Button>
+          
           <Button
             onClick={handleGraphs}
             className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"
           >
             Super Cool Data
-          </Button>
-          <Button
-            onClick={handleGallery}
-            className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"
-          >
-            Gallery
           </Button>
           <Button
             onClick={handleLogOut}

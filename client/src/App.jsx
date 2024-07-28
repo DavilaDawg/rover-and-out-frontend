@@ -11,13 +11,14 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "@/components/home.jsx";
 import MyLogin from "@/components/login.jsx";
 import Dashboard from "@/components/dashboard.jsx";
-import Timeline from "@/components/timeline.jsx";
+import Map from "@/components/map.jsx";
 import Gallery from "@/components/gallery.jsx";
 import Graphs from "@/components/graphs.jsx";
 import AnnotatedGallery from "@/components/annotatedGallery.jsx";
 import ImageViewer from "@/components/imageViewer.jsx";
 import SelectCamPage from "@/components/selectCamPage";
 import BoringGallery from "./components/boringGallery";
+import GallDash from "./components/gallDash";
 
 function App() {
   return (
@@ -41,13 +42,14 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<MyLogin />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/timeline" element={<Timeline />} />
+            <Route path="/map" element={<Map />} />
             <Route path="/gallery/:camToFilter" element={<Gallery />} />
             <Route path="/boringGallery" element={<BoringGallery />} />
             <Route path="/graphs" element={<Graphs />} />
             <Route path="/annotated" element={<AnnotatedGallery />} />
             <Route path="/imageViewer" element={<ImageViewer />} />
             <Route path="/selectCamPage" element={<SelectCamPage />} />
+            <Route path="/gallDash" element={<GallDash/>} />
           </Routes>
         </Router>
 

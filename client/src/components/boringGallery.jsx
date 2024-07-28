@@ -16,12 +16,18 @@ const BoringGallery = () => {
 
   //Navigation:
   function handleBack() {
-    navigate("/dashboard");
+    navigate("/gallDash");
   }
 
   function navigateAnnotated() {
     navigate("/annotated");
   }
+
+  const handleInspect = (image) => {
+    navigate("/imageViewer", {
+      state: { imageUrl: image, isBoring: true , sol: sol},
+    });
+  };
 
   async function get() {
     setLoading(true);
@@ -55,12 +61,6 @@ const BoringGallery = () => {
   const handleSubmit = () => {
     // on submit the total pics should be shown!!!! FIXXXXXXXXXXXXXXXXXXXXXxxxx
     setSubmittedSol(sol);
-  };
-
-  const handleInspect = (image) => {
-    navigate("/imageViewer", {
-      state: { imageUrl: image, isBoring: true , sol: sol},
-    });
   };
 
   return (
