@@ -71,6 +71,11 @@ const MapGall = () => {
           Back
         </Button>
       </div>
+
+      {selectedLocation === "DRILL" && (
+        <img className="w-full max-w-4xl h-auto mx-auto mb-10" src="/drill.png" />
+      )}
+
       <div>
         {loading && <p className="text-center mt-2">Loading images...</p>}
         {error && <p className="text-center text-red-400 mt-2">{error}</p>}
