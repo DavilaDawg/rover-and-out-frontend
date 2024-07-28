@@ -39,9 +39,13 @@ const MapGall = () => {
       if (result.success) {
         console.log("API result:", result);
 
-        const urls = result.allPhotos.map((img) => img.img_src);
-        setImages(urls);
-        setTotalPhotos(urls.length);
+        //const concat = Array.prototype.concat(result.con)
+        const concat = result.concatArr.flatMap(item => item.img_src);
+
+        console.log(concat)
+
+        setImages(concat);
+        setTotalPhotos(concat.length);
         setError(null);
       } else {
         setImages([]);

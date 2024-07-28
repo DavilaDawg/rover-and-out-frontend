@@ -12,12 +12,21 @@ export const getNasaInfo = async (sol = 0) => {
 
     if (!response.ok) {
       if (response.status === 403) {
-        return { success: false, error: "403 Forbidden: Check your access rights" };
+        return {
+          success: false,
+          error: "403 Forbidden: Check your access rights",
+        };
       }
       if (response.status === 503 || response.status === 500) {
-        return { success: false, error: "Server Unavailable. Please try again later." };
+        return {
+          success: false,
+          error: "Server Unavailable. Please try again later.",
+        };
       }
-      return { success: false, error: `Request failed with status ${response.status}` };
+      return {
+        success: false,
+        error: `Request failed with status ${response.status}`,
+      };
     }
 
     const data = await response.json();
@@ -38,75 +47,98 @@ export const getManifestInfo = async () => {
 
     if (!response.ok) {
       if (response.status === 403) {
-        return { success: false, error: "403 Forbidden: Check your access rights" };
+        return {
+          success: false,
+          error: "403 Forbidden: Check your access rights",
+        };
       }
       if (response.status === 503 || response.status === 500) {
-        return { success: false, error: "Server Unavailable. Please try again later." };
+        return {
+          success: false,
+          error: "Server Unavailable. Please try again later.",
+        };
       }
-      return { success: false, error: `Request failed with status ${response.status}` };
+      return {
+        success: false,
+        error: `Request failed with status ${response.status}`,
+      };
     }
 
     const data = await response.json();
 
     return { success: true, data };
   } catch (error) {
-    return { success: false, error: "Error fetching manifest info from backend" };
+    return {
+      success: false,
+      error: "Error fetching manifest info from backend",
+    };
   }
 };
 
 export const getMapImgs = async (location) => {
   try {
-
-    let sol;
-    let sol2;
+    let sol1;
+    let range;
     if (location === "LAND") {
-      sol = 0;
-      sol2 = 3;
+      sol1 = 0;
+      range = 3;
     } else if (location === "BEACH") {
-      sol = 1509;
-      sol2 = 1608;
+      sol1 = 1509;
+      range = 3;
     } else if (location === "CURRENT") {
-      sol = 4101;
+      sol1 = 4101;
+      range = 3;
     } else if (location === "DRILL") {
-      sol = 2890;
+      sol1 = 2890;
+      range = 3;
     }
 
-    const response = await fetch(`${server_API_root}/api/images/${sol}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const response2 = await fetch(`${server_API_root}/api/images/${sol2}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      if (response.status === 403) {
-        return { success: false, error: "403 Forbidden: Check your access rights" };
-      }
-      if (response.status === 503 || response.status === 500) {
-        return { success: false, error: "Server Unavailable. Please try again later." };
-      }
-      return { success: false, error: `Request failed with status ${response.status}` };
+    let arrRange = [];
+    for (let i = 0; i < range; i++) {
+      arrRange.push(i);
     }
 
-    const data = await response.json();
-    const data2 = await response2.json();
+    let responsePhotosArr = [];
+    for (let i = 0; i < range; i++) {
+      const response = await fetch(`${server_API_root}/api/images/${i}`, { // maybe set timeout 
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const photos = data.photos
-    const photos2 = data2.photos
+      if (!response.ok) {
+        if (response.status === 403) {
+          return {
+            success: false,
+            error: "403 Forbidden: Check your access rights",
+          };
+        }
+        if (response.status === 503 || response.status === 500) {
+          return {
+            success: false,
+            error: "Server Unavailable. Please try again later.",
+          };
+        }
+        return {
+          success: false,
+          error: `Request failed with status ${response.status}`,
+        };
+      }
 
-    const arr = [photos, photos2]
+      const data = await response.json();
 
-    const allPhotos = Array.prototype.concat(...arr)
+      const photos = data.photos;
 
-    console.log(data)
+      responsePhotosArr.push(photos);
+    }
 
-    return { success: true, allPhotos };
+    const concatArr = responsePhotosArr.flat();
+
+    console.log("concatArr: ", concatArr)
+
+    return { success: true, concatArr };
   } catch (error) {
+    console.log(error)
     return { success: false, error: "Error fetching images from backend" };
   }
 };
