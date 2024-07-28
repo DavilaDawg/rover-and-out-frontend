@@ -63,7 +63,8 @@ export const getMapImgs = async (location) => {
       sol = 0;
       sol2 = 3;
     } else if (location === "BEACH") {
-      sol = 1608;
+      sol = 1509;
+      sol2 = 1608;
     } else if (location === "CURRENT") {
       sol = 4101;
     } else if (location === "DRILL") {
