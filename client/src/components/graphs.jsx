@@ -111,8 +111,8 @@ const Graphs = () => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center mt-8">
-        <div className="w-full max-w-screen-xl h-[600px]">
+      <div className="flex justify-center items-center">
+        <div className="w-full max-w-screen-4xl h-[1000px] ml-60 mb-10">
           <Bar data={chartData} />
         </div>
       </div>

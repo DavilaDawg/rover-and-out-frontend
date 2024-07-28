@@ -14,7 +14,7 @@ const Dashboard = () => {
   }
 
   function handleMap() {
-    navigate("/timeline");
+    navigate("/map");
   }
 
   function handleGraphs() {

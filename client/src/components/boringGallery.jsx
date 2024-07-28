@@ -64,7 +64,7 @@ const BoringGallery = () => {
   };
 
   return (
-    <div className="w-full min-h-screen p-4 text-white">
+    <div className="w-full min-h-screen p-4">
       <h1 className="text-xl font-bold text-center mb-4">Gallery</h1>
 
       <div className="flex justify-center mb-4">
@@ -77,7 +77,7 @@ const BoringGallery = () => {
           value={sol}
           onChange={(e) => setSol(Number(e.target.value))}
           min="0"
-          className="w-24 px-2 py-1 border border-gray-600 rounded bg-gray-700 text-white"
+          className="w-24 px-2 py-1 border rounded bg-gray-600 text-white"
         />
         <button
           onClick={handleSubmit}
