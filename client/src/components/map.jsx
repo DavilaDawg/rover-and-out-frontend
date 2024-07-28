@@ -66,7 +66,7 @@ const Map = () => {
             className="absolute bottom-8 ml-10 bg-gray-800 text-white px-4 py-2 rounded"
             onClick={toCurrent}
           >
-            Current positon
+            Current Location
           </Button>
         </div>
       </div>

@@ -14,20 +14,23 @@ const Gallery = () => {
   const [images, setImages] = useState([]); // arr of urls
   const [totalPhotos, setTotalPhotos] = useState(0);
 
-  const { camToFilter } = useParams();
+  const { camToFilter } = useParams(); // Initalizing a param to set later
 
-  // Camera details for conditional rendering: 
+  // Camera details for conditional rendering:
   let cameraDetails = "";
   let camName = "";
   if (camToFilter === "MAHLI") {
-    cameraDetails = "Microscopic Imaging of minerals, textures and structures in rocks and soil at scales smaller than the diameter of a human hair."
-    camName= "Mars Hand Lens Imager"
+    cameraDetails =
+      "Microscopic Imaging of minerals, textures and structures in rocks and soil at scales smaller than the diameter of a human hair.";
+    camName = "Mars Hand Lens Imager";
   } else if (camToFilter === "NAVCAM") {
-    cameraDetails = "Captures high-resolution, wide-angle images to create 3D terrain maps, enabling autonomous navigation and obstacle avoidance for safe exploration."
-    camName = "Navigation Camera"
+    cameraDetails =
+      "Captures high-resolution, wide-angle images to create 3D terrain maps, enabling autonomous navigation and obstacle avoidance for safe exploration.";
+    camName = "Navigation Camera";
   } else if (camToFilter === "RHAZ") {
-    cameraDetails = "Detects obstacles, ensuring safe navigation of the rover across the Martian surface."
-    camName= "Rover Hazard Avoidance Camera"
+    cameraDetails =
+      "Detects obstacles, ensuring safe navigation of the rover across the Martian surface.";
+    camName = "Rover Hazard Avoidance Camera";
   }
 
   //Navigation:
@@ -86,26 +89,28 @@ const Gallery = () => {
   return (
     <div className="w-full min-h-screen p-4 text-white">
       <h1 className="text-5xl font-bold">Gallery</h1>
-      <div className = "flex mt-3 justify-center">
+      <div className="flex mt-3 justify-center">
         <p className=" mb-4 text-4xl font-semibold">Camera:</p>
-        <p className= "text-3xl mt-1 ml-3">{camName}</p>
+        <p className="text-3xl mt-1 ml-3">{camName}</p>
       </div>
-      <p className = "flex justify-center text-lg rounded-md font-semibold mb-4">{cameraDetails}</p>
+      <p className="flex justify-center text-lg rounded-md font-semibold mb-4">
+        {cameraDetails}
+      </p>
 
       <Button
-          onClick={navigateDash}
-          className="absolute top-4 right-20 bg-gray-600 text-white px-4 py-2 rounded mr-5"
-        >
-          Dashboard
-        </Button>
+        onClick={navigateDash}
+        className="absolute top-4 right-20 bg-gray-600 text-white px-4 py-2 rounded mr-5"
+      >
+        Dashboard
+      </Button>
 
-        <Button
-          onClick={handleBack}
-          className="absolute top-4 right-5 bg-gray-600 text-gray-300 rounded hover:bg-gray-600 transition-colors"
-        >
-          Back
-        </Button>
-      
+      <Button
+        onClick={handleBack}
+        className="absolute top-4 right-5 bg-gray-600 text-gray-300 rounded hover:bg-gray-600 transition-colors"
+      >
+        Back
+      </Button>
+
       <div className="flex justify-center mb-4">
         <label htmlFor="sol" className="mr-2 mt-2">
           Sol:
@@ -151,11 +156,15 @@ const Gallery = () => {
                 <button
                   key={index}
                   className="border border-gray-600 rounded overflow-hidden"
-                  onClick={
-                    () =>
-                      navigate("/imageViewer", {
-                        state: { imageUrl: image, isBoring: false , sol: sol, filter: camToFilter},
-                      }) 
+                  onClick={() =>
+                    navigate("/imageViewer", {
+                      state: {
+                        imageUrl: image,
+                        isBoring: false,
+                        sol: sol,
+                        filter: camToFilter,
+                      },
+                    })
                   }
                 >
                   <img
