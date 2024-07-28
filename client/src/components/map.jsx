@@ -10,13 +10,16 @@ const Map = () => {
   }
 
   function toLanding() {
-    navigate("/mapGall"); 
+    navigate("/mapGall");
+  }
+
+  function toDrill() {
+    navigate("/mapGall");
   }
 
   return (
     <div className="relative">
-
-      <p className= "text-5xl font-semibold pt-2 pl-2" >Select location</p>
+      <p className="text-5xl font-semibold pt-2 pl-2">Select location</p>
       <Button
         className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded"
         onClick={handleBack}
@@ -24,17 +27,21 @@ const Map = () => {
         Back
       </Button>
 
-      <div className="relative pt-4"> 
-        <img
-          className="w-full h-auto"
-          src="/roverPath.png"
-          alt="Rover path"
-        />
+      <div className="relative pt-4">
+        <img className="w-full h-auto" src="/roverPath.png" alt="Rover path" />
+
         <Button
           className="absolute left-1/2 top-44 ml-28 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded"
           onClick={toLanding}
         >
           Bradbury Landing
+        </Button>
+
+        <Button
+          className="absolute left-1/2 top-96 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded"
+          onClick={toDrill}
+        >
+          Mary Anning & Grocken Drill Sites
         </Button>
       </div>
     </div>
