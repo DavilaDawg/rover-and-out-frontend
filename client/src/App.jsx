@@ -19,6 +19,7 @@ import ImageViewer from "@/components/imageViewer.jsx";
 import SelectCamPage from "@/components/selectCamPage";
 import BoringGallery from "./components/boringGallery";
 import GallDash from "./components/gallDash";
+import MapGall from "./components/mapGall";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             <Route path="/imageViewer" element={<ImageViewer />} />
             <Route path="/selectCamPage" element={<SelectCamPage />} />
             <Route path="/gallDash" element={<GallDash/>} />
+            <Route path="/mapGall" element={<MapGall/>} />
           </Routes>
         </Router>
 
