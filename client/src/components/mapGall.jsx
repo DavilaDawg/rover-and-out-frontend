@@ -34,12 +34,12 @@ const MapGall = () => {
   async function get() {
     setLoading(true);
     try {
-      const result = await getMapImgs(selectedLocation);
+      const result = await getMapImgs(selectedLocation); // Res is a arr of objs with img_src key
 
       if (result.success) {
-        console.log("API result:", result.data);
+        console.log("API result:", result);
 
-        const urls = result.data.photos.map((img) => img.img_src);
+        const urls = result.allPhotos.map((img) => img.img_src);
         setImages(urls);
         setTotalPhotos(urls.length);
         setError(null);
@@ -62,7 +62,7 @@ const MapGall = () => {
 
   return (
     <>
-      <div className="relative">
+      <div className="relative mb-4">
         <p className="text-5xl font-semibold pt-2 pl-2">{longLocation}</p>
         <Button
           className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded"

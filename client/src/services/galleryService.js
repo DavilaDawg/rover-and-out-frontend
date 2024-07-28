@@ -58,8 +58,10 @@ export const getMapImgs = async (location) => {
   try {
 
     let sol;
+    let sol2;
     if (location === "LAND") {
-      sol = 3;
+      sol = 0;
+      sol2 = 3;
     } else if (location === "BEACH") {
       sol = 1608;
     } else if (location === "CURRENT") {
@@ -69,6 +71,12 @@ export const getMapImgs = async (location) => {
     }
 
     const response = await fetch(`${server_API_root}/api/images/${sol}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const response2 = await fetch(`${server_API_root}/api/images/${sol2}`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -85,8 +93,18 @@ export const getMapImgs = async (location) => {
     }
 
     const data = await response.json();
+    const data2 = await response2.json();
 
-    return { success: true, data };
+    const photos = data.photos
+    const photos2 = data2.photos
+
+    const arr = [photos, photos2]
+
+    const allPhotos = Array.prototype.concat(...arr)
+
+    console.log(data)
+
+    return { success: true, allPhotos };
   } catch (error) {
     return { success: false, error: "Error fetching images from backend" };
   }
