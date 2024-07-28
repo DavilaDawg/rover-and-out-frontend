@@ -9,8 +9,7 @@ const ImageViewer = () => {
   const imgRef = useRef(null); // Ref to hold the image element
 
   const { imageUrl, isBoring, sol, filter } = location.state || {};
-  const [maState, setMaState] = useState(null); 
-
+  const [maState, setMaState] = useState(null);
 
   // Navigation:
   if (!imageUrl) {
@@ -56,7 +55,7 @@ const ImageViewer = () => {
   }, [imageUrl, maState]);
 
   function handleSave() {
-    console.log("saving")
+    console.log("saving");
   }
 
   return (

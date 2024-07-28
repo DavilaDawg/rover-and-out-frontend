@@ -14,7 +14,7 @@ const Gallery = () => {
   const [images, setImages] = useState([]); // arr of urls
   const [totalPhotos, setTotalPhotos] = useState(0);
 
-  const { camToFilter } = useParams(); // Retrieving the URL parameter
+  const { camToFilter } = useParams();
 
   // Camera details for conditional rendering: 
   let cameraDetails = "";

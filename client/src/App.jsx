@@ -44,14 +44,14 @@ function App() {
             <Route path="/login" element={<MyLogin />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/map" element={<Map />} />
-            <Route path="/gallery/:camToFilter" element={<Gallery />} />
+            <Route path="/gallery/:camToFilter" element={<Gallery />} /> {/* Param has to be the same as the one defined by useParams! */}
             <Route path="/boringGallery" element={<BoringGallery />} />
             <Route path="/graphs" element={<Graphs />} />
             <Route path="/annotated" element={<AnnotatedGallery />} />
             <Route path="/imageViewer" element={<ImageViewer />} />
             <Route path="/selectCamPage" element={<SelectCamPage />} />
             <Route path="/gallDash" element={<GallDash/>} />
-            <Route path="/mapGall" element={<MapGall/>} />
+            <Route path="/mapGall/:selectedLocation" element={<MapGall/>} />
           </Routes>
         </Router>
 

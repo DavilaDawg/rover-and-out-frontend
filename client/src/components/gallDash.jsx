@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 const GallDash = () => {
 
@@ -23,7 +23,9 @@ const GallDash = () => {
     <div className="flex flex-col min-h-screen">
       <div className="flex flex-col items-center justify-center flex-grow">
         <div className="flex flex-col gap-10 mt-8">
-            <h1 className= "text-white text-5xl font-bold ml-6"> Select filter:</h1>
+          <h1 className="text-white text-5xl font-bold ml-6">
+            Select filter:
+          </h1>
           <Button
             onClick={handleBoring}
             className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"

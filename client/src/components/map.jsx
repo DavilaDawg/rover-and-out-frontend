@@ -1,24 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
 
 const Map = () => {
+  // Navigation:
   const navigate = useNavigate();
 
   function handleBack() {
     navigate("/dashboard");
   }
 
+  // Passing params as state for mapGall
   function toLanding() {
-    navigate("/mapGall");
+    navigate("/mapGall/LAND");
   }
 
   function toDrill() {
-    navigate("/mapGall");
+    navigate("/mapGall/DRILL");
+  }
+
+  function toBeach() {
+    navigate("/mapGall/BEACH");
+  }
+
+  function toCurrent() {
+    navigate("/mapGall/CURRENT");
   }
 
   return (
-    <div className="relative">
+    <div className="relative mb-10">
       <p className="text-5xl font-semibold pt-2 pl-2">Select location</p>
       <Button
         className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded"
@@ -43,6 +53,20 @@ const Map = () => {
             onClick={toDrill}
           >
             Mary Anning & Grocken Drill Sites
+          </Button>
+
+          <Button
+            className="absolute top-2/3 left-1/4 bg-gray-800 text-white px-4 py-2 rounded"
+            onClick={toBeach}
+          >
+            Ogunquit Beach
+          </Button>
+
+          <Button
+            className="absolute bottom-8 ml-10 bg-gray-800 text-white px-4 py-2 rounded"
+            onClick={toCurrent}
+          >
+            Current positon
           </Button>
         </div>
       </div>
