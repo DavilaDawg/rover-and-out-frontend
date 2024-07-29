@@ -26,64 +26,8 @@ const ImageViewer = () => {
     navigate("/dashboard");
   }
 
-  useEffect(() => {
-    if (imgRef.current) {
-      const sourceImage = imgRef.current;
-      const targetRoot = sourceImage.parentElement;
-
-      const markerArea = new markerjs2.MarkerArea(sourceImage);
-      markerArea.targetRoot = targetRoot;
-
-      const handleRender = (event) => {
-        sourceImage.src = event.dataUrl; // Update the image display
-        setMaState(event.state); // Save the state of MarkerArea
-
-        const savedImages = JSON.parse(localStorage.getItem('annotations')) || []; 
-
-        const updatedImages = savedImages.filter(img => img.url !== imageUrl);
-        updatedImages.push({ url: imageUrl, state: event.state });
-        localStorage.setItem('annotations', JSON.stringify(updatedImages));
-      };
-
-      markerArea.addEventListener("render", handleRender);
-      markerArea.show();
-
-      // Restore state if present
-      const savedState = localStorage.getItem('annotations');
-
-      if (savedState) { 
-        console.log("saved state: ", savedState)
-        const annotations = JSON.parse(savedState);
-        const imageAnnotation = annotations.find(annotation => annotation.url === imageUrl);
-        if (imageAnnotation) {
-          markerArea.restoreState(imageAnnotation.state);
-        }
-      }
-
-      // Cleanup on unmount
-      return () => {
-        markerArea.removeEventListener("render", handleRender);
-      };
-    }
-  }, [imageUrl]); // When the component mounts or imageUrl changes, you check localStorage for previously saved annotations
-  
-
   function handleSave() { 
-    if (imgRef.current) {
-      const markerArea = new markerjs2.MarkerArea(imgRef.current);
-
-      try {
-        const state = markerArea.getState();
-        const savedImages = JSON.parse(localStorage.getItem('annotations')) || [];
-
-        const updatedImages = savedImages.filter(img => img.url !== imageUrl);
-        updatedImages.push({ url: imageUrl, state });
-        localStorage.setItem('annotations', JSON.stringify(updatedImages));
-        console.log("Annotations saved to local storage.");
-      } catch (error) {
-        console.error("Error getting state:", error);
-      }
-    }
+    console.log("saving")
   }
 
   return (
