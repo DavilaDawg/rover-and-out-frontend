@@ -130,8 +130,6 @@ export const getMapImgs = async (location) => {
 
     const concatArr = responsePhotosArr.flat();
 
-    console.log("concatArr: ", concatArr)
-
     return { success: true, concatArr };
   } catch (error) {
     console.log(error)
