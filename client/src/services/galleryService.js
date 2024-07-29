@@ -144,14 +144,15 @@ export const postAnnotations = async (dataURL, metaData) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ imageData: dataURL, metaData }),
+      body: JSON.stringify({ imageData: dataURL, metaData: metaData }),
     });
 
+    const result = await response.json();
+
     if (!response.ok) {
+      console.error('Error details:', result); 
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-
-    const result = await response.json();
 
     if (result.success) {
       console.log('Image saved successfully');

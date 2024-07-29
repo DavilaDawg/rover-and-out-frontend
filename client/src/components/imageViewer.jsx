@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // UseLocation hook allows you to access the state object that you passed when navigating
 import { Button } from "@/components/ui/button.jsx";
 import * as markerjs2 from "markerjs2";
-import { postAnnotations } from "@/services/galleryService";
 
 const ImageViewer = () => {
   const navigate = useNavigate();
@@ -38,13 +37,27 @@ const ImageViewer = () => {
       const handleRender = (event) => {
         sourceImage.src = event.dataUrl; // Update the image display
         setMaState(event.state); // Save the state of MarkerArea
+
+        const savedImages = JSON.parse(localStorage.getItem('annotations')) || []; 
+
+        const updatedImages = savedImages.filter(img => img.url !== imageUrl);
+        updatedImages.push({ url: imageUrl, state: event.state });
+        localStorage.setItem('annotations', JSON.stringify(updatedImages));
       };
 
       markerArea.addEventListener("render", handleRender);
       markerArea.show();
 
-      if (maState) {
-        markerArea.restoreState(annotations);
+      // Restore state if present
+      const savedState = localStorage.getItem('annotations');
+
+      if (savedState) { 
+        console.log("saved state: ", savedState)
+        const annotations = JSON.parse(savedState);
+        const imageAnnotation = annotations.find(annotation => annotation.url === imageUrl);
+        if (imageAnnotation) {
+          markerArea.restoreState(imageAnnotation.state);
+        }
       }
 
       // Cleanup on unmount
@@ -52,15 +65,24 @@ const ImageViewer = () => {
         markerArea.removeEventListener("render", handleRender);
       };
     }
-  }, [imageUrl, maState]);
+  }, [imageUrl]); // When the component mounts or imageUrl changes, you check localStorage for previously saved annotations
+  
 
-  function handleSave() {
-    console.log("saving");
+  function handleSave() { 
     if (imgRef.current) {
       const markerArea = new markerjs2.MarkerArea(imgRef.current);
-      markerArea.getState().then((state) => {
-        postAnnotations(imageUrl, state);
-      });
+
+      try {
+        const state = markerArea.getState();
+        const savedImages = JSON.parse(localStorage.getItem('annotations')) || [];
+        
+        const updatedImages = savedImages.filter(img => img.url !== imageUrl);
+        updatedImages.push({ url: imageUrl, state });
+        localStorage.setItem('annotations', JSON.stringify(updatedImages));
+        console.log("Annotations saved to local storage.");
+      } catch (error) {
+        console.error("Error getting state:", error);
+      }
     }
   }
 
@@ -89,12 +111,12 @@ const ImageViewer = () => {
         )}
       </div>
 
-      <div className=" bg-gray-900">
+      <div className="bg-gray-900">
         <button
           onClick={handleSave}
           className="absolute top-4 right-28 bg-gray-800 text-white px-4 py-2 rounded"
         >
-          Save Image
+          Save Annotations
         </button>
       </div>
 
@@ -102,7 +124,6 @@ const ImageViewer = () => {
         ref={imgRef}
         src={imageUrl}
         alt="Selected Mars Rover"
-        className="w-full h-full"
       />
     </>
   );

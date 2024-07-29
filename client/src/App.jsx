@@ -14,7 +14,7 @@ import Dashboard from "@/components/dashboard.jsx";
 import Map from "@/components/map.jsx";
 import Gallery from "@/components/gallery.jsx";
 import Graphs from "@/components/graphs.jsx";
-import AnnotatedGallery from "@/components/annotatedGallery.jsx";
+import AnnotatedGallery from "@/components/annotatedGall.jsx";
 import ImageViewer from "@/components/imageViewer.jsx";
 import SelectCamPage from "@/components/selectCamPage";
 import BoringGallery from "./components/boringGallery";
