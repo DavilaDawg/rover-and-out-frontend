@@ -22,7 +22,7 @@ const MapGall = () => {
     DINGO: "Dingo Gap",
     HILLS: "Pathrump Hills",
     MURRAY: "Nurray Buttes",
-    YELLOW: "Yellowknife Bay"
+    YELLOW: "Yellowknife Bay",
   };
 
   const longLocation = locationMap[selectedLocation] || "Unknown Location";
@@ -116,16 +116,17 @@ const MapGall = () => {
                   <button
                     key={index}
                     className="border border-gray-600 rounded overflow-hidden"
-                    onClick={() =>
-                      navigate("/imageViewer", {
+                    onClick={() => {
+                      console.log("clicked");
+                      navigate("/imageViewer", { // make new imageViewer component that doesnt have these states!!!
                         state: {
                           imageUrl: image,
                           isBoring: false,
-                          sol: sol,
+                          sol: 1,
                           filter: camToFilter,
                         },
-                      })
-                    }
+                      });
+                    }}
                   >
                     <img
                       src={image}
