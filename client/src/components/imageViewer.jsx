@@ -75,7 +75,7 @@ const ImageViewer = () => {
       try {
         const state = markerArea.getState();
         const savedImages = JSON.parse(localStorage.getItem('annotations')) || [];
-        
+
         const updatedImages = savedImages.filter(img => img.url !== imageUrl);
         updatedImages.push({ url: imageUrl, state });
         localStorage.setItem('annotations', JSON.stringify(updatedImages));
@@ -124,6 +124,7 @@ const ImageViewer = () => {
         ref={imgRef}
         src={imageUrl}
         alt="Selected Mars Rover"
+        className = "w-full h-full"
       />
     </>
   );
