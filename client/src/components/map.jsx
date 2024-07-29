@@ -36,24 +36,33 @@ const Map = () => {
         <img className="w-full h-auto" src="/roverPath.png" alt="Rover path" />
 
         <div className="absolute inset-0">
-          <div className="absolute top-[8%] left-[55%] transform -translate-x-1/2 flex items-center space-x-4">
-            <p className="font-semibold font-mono text-white">Bradbury Landing</p>
+          <div className="absolute top-[8%] left-[53.5%] transform -translate-x-1/2 flex items-center space-x-4">
+            <p className="text-xl font-semibold font-mono text-white">
+              Bradbury Landing
+            </p>
             <RoverButton onClick={toLanding} />
           </div>
 
-          <Button
-            className="absolute top-[53%] transform -translate-x-1/2 mt-80 ml-8 bg-gray-800 text-white px-4 py-2 rounded"
-            onClick={toDrill}
-          >
-            Mary Anning & Grocken Drill Sites
-          </Button>
+          <div className="absolute top-[71.5%] left-[50.5%] transform -translate-x-1/2 flex items-center space-x-4">
+            <RoverButton onClick={toDrill} />
+            <p className="text-xl font-semibold font-mono text-white mb-10">
+              Mary Anning & Grocken Drill Sites
+            </p>
+          </div>
 
-          <Button
-            className="absolute top-2/3 left-1/4 bg-gray-800 text-white px-4 py-2 rounded"
-            onClick={toBeach}
-          >
+          <div className="absolute top-[66%] left-[35.1%] transform -translate-x-1/2 flex items-center space-x-4">
+            <RoverButton onClick={toBeach} />
+            <p className="text-xl font-semibold font-mono text-white mb-10">
             Ogunquit Beach
-          </Button>
+            </p>
+          </div>
+
+          <div className="absolute top-[97%] left-[50.8%] transform -translate-x-1/2 flex items-center space-x-4">
+            <RoverButton onClick={toCurrent} />
+            <p className="text-xl font-semibold font-mono text-white">
+            Current Location
+            </p>
+          </div>
 
           <Button
             className="absolute bottom-8 ml-10 bg-gray-800 text-white px-4 py-2 rounded"
