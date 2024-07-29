@@ -2,7 +2,7 @@
 
 const server_API_root = "http://localhost:3000";
 
-// Image and data funcs:
+// Images and info funcs 
 export const getNasaInfo = async (sol = 0) => {
   try {
     const response = await fetch(`${server_API_root}/api/images/${sol}`, {
@@ -189,18 +189,18 @@ export const getFavsService = async () => {
 
     return { success: true, data };
   } catch (error) {
-    return { success: false, error: "Error fetching favs from backend" };
+    return { success: false, error: "Error fetching images from backend" };
   }
 };
 
-export const postFavService = async (dataURL) => {
+export const postFavService = async (dataURL, metaData) => {
   try {
     const response = await fetch(`${server_API_root}/favs`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ image: dataURL }),
+      body: JSON.stringify({ imageData: dataURL, metaData: metaData }),
     });
 
     const result = await response.json();
@@ -213,7 +213,7 @@ export const postFavService = async (dataURL) => {
     if (result.success) {
       console.log("Image saved successfully");
     } else {
-      console.error("Error saving favs:", result.error);
+      console.error("Error saving image:", result.error);
     }
   } catch (error) {
     console.error("Unexpected error:", error);

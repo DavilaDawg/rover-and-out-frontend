@@ -173,7 +173,7 @@ const Gallery = () => {
                       className="w-60 h-48 object-cover"
                     />
                   </button>
-                  <button onClick={postFavService(image)}>
+                  <button onClick={()=> postFavService(image)}>
                     +
                   </button>
                 </>
