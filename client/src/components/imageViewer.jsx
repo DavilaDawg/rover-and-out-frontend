@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // UseLocation hook allows you to access the state object that you passed when navigating
 import { Button } from "@/components/ui/button.jsx";
 import * as markerjs2 from "markerjs2";
+import { postAnnotations } from "@/services/galleryService";
 
 const ImageViewer = () => {
   const navigate = useNavigate();
@@ -11,7 +12,6 @@ const ImageViewer = () => {
   const { imageUrl, isBoring, sol, filter } = location.state || {};
   const [maState, setMaState] = useState(null);
 
-  // Navigation:
   if (!imageUrl) {
     const path = isBoring ? "/boringGallery" : `/gallery/${filter}`;
     navigate(path);
@@ -44,7 +44,7 @@ const ImageViewer = () => {
       markerArea.show();
 
       if (maState) {
-        markerArea.restoreState(maState);
+        markerArea.restoreState(annotations);
       }
 
       // Cleanup on unmount
@@ -56,6 +56,12 @@ const ImageViewer = () => {
 
   function handleSave() {
     console.log("saving");
+    if (imgRef.current) {
+      const markerArea = new markerjs2.MarkerArea(imgRef.current);
+      markerArea.getState().then((state) => {
+        postAnnotations(imageUrl, state);
+      });
+    }
   }
 
   return (

@@ -136,3 +136,29 @@ export const getMapImgs = async (location) => {
     return { success: false, error: "Error fetching images from backend" };
   }
 };
+
+export const postAnnotations = async (dataURL, metaData) => {
+  try {
+    const response = await fetch(`${server_API_root}/save`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ imageData: dataURL, metaData }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    if (result.success) {
+      console.log('Image saved successfully');
+    } else {
+      console.error('Error saving image:', result.error);
+    }
+  } catch (error) {
+    console.error('Unexpected error:', error);
+  }
+}
