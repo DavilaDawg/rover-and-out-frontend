@@ -36,8 +36,7 @@ const Map = () => {
         <img className="w-full h-auto" src="/roverPath.png" alt="Rover path" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-
-        <RoverButton></RoverButton>
+          <RoverButton onClick={toBeach}></RoverButton>
 
           <Button
             className="absolute top-40 ml-56 bg-gray-800 text-white px-4 py-2 rounded"

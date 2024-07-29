@@ -95,8 +95,9 @@ export const getMapImgs = async (location) => {
 
     let responsePhotosArr = [];
     for (let i = 0; i < range; i++) {
-      const sol = sol1+i
-      const response = await fetch(`${server_API_root}/api/images/${sol}`, { // maybe set timeout 
+      const sol = sol1 + i;
+      const response = await fetch(`${server_API_root}/api/images/${sol}`, {
+        // maybe set timeout
         headers: {
           "Content-Type": "application/json",
         },
@@ -132,7 +133,7 @@ export const getMapImgs = async (location) => {
 
     return { success: true, concatArr };
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return { success: false, error: "Error fetching images from backend" };
   }
 };

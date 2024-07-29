@@ -42,7 +42,7 @@ const Dashboard = () => {
           >
             Interactive Map
           </Button>
-          
+
           <Button
             onClick={handleGraphs}
             className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"

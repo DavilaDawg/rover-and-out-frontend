@@ -25,7 +25,6 @@ function App() {
   return (
     <>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -50,11 +49,10 @@ function App() {
             <Route path="/annotated" element={<AnnotatedGallery />} />
             <Route path="/imageViewer" element={<ImageViewer />} />
             <Route path="/selectCamPage" element={<SelectCamPage />} />
-            <Route path="/gallDash" element={<GallDash/>} />
-            <Route path="/mapGall/:selectedLocation" element={<MapGall/>} />
+            <Route path="/gallDash" element={<GallDash />} />
+            <Route path="/mapGall/:selectedLocation" element={<MapGall />} />
           </Routes>
         </Router>
-
       </ThemeProvider>
     </>
   );
