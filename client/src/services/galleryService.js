@@ -200,7 +200,7 @@ export const postFavService = async (dataURL, metaData) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ imageData: dataURL, metaData: metaData }),
+      body: JSON.stringify({ imageData: dataURL, metaData: metaData }), // error here!!!
     });
 
     const result = await response.json();
