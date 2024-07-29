@@ -97,7 +97,6 @@ export const getMapImgs = async (location) => {
     for (let i = 0; i < range; i++) {
       const sol = sol1 + i;
       const response = await fetch(`${server_API_root}/api/images/${sol}`, {
-        // maybe set timeout
         headers: {
           "Content-Type": "application/json",
         },

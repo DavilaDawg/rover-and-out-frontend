@@ -35,15 +35,11 @@ const Map = () => {
       <div className="relative pt-4">
         <img className="w-full h-auto" src="/roverPath.png" alt="Rover path" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <RoverButton onClick={toBeach}></RoverButton>
-
-          <Button
-            className="absolute top-40 ml-56 bg-gray-800 text-white px-4 py-2 rounded"
-            onClick={toLanding}
-          >
-            Bradbury Landing
-          </Button>
+        <div className="absolute inset-0">
+          <div className="absolute top-[8%] left-[55%] transform -translate-x-1/2 flex items-center space-x-4">
+            <p className="font-semibold font-mono text-white">Bradbury Landing</p>
+            <RoverButton onClick={toLanding} />
+          </div>
 
           <Button
             className="absolute top-[53%] transform -translate-x-1/2 mt-80 ml-8 bg-gray-800 text-white px-4 py-2 rounded"
