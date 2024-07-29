@@ -84,23 +84,19 @@ export const getMapImgs = async (location) => {
       range = 3;
     } else if (location === "BEACH") {
       sol1 = 1509;
-      range = 3;
+      range = 10;
     } else if (location === "CURRENT") {
       sol1 = 4101;
-      range = 3;
+      range = 10;
     } else if (location === "DRILL") {
       sol1 = 2890;
-      range = 3;
-    }
-
-    let arrRange = [];
-    for (let i = 0; i < range; i++) {
-      arrRange.push(i);
+      range = 20;
     }
 
     let responsePhotosArr = [];
     for (let i = 0; i < range; i++) {
-      const response = await fetch(`${server_API_root}/api/images/${i}`, { // maybe set timeout 
+      const sol = sol1+i
+      const response = await fetch(`${server_API_root}/api/images/${sol}`, { // maybe set timeout 
         headers: {
           "Content-Type": "application/json",
         },

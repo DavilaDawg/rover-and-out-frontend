@@ -9,20 +9,19 @@ const MapGall = () => {
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState([]); // arr of urls
   const [totalPhotos, setTotalPhotos] = useState(0);
+  //const [currLocation, setCurrLocation] = useState('')
 
   const { selectedLocation } = useParams();
 
-  let longLocation = "";
-  if (selectedLocation === "LAND") {
-    // call server to fetch here based on location!!!
-    longLocation = "Bradbury Landing";
-  } else if (selectedLocation === "DRILL") {
-    longLocation = "Mary Anning & Grocken Drill Sites";
-  } else if (selectedLocation === "CURRENT") {
-    longLocation = "Current Location";
-  } else if (selectedLocation === "BEACH") {
-    longLocation = "Ogunquit Beach";
-  }
+  // Mapping selectedLocation to longLocation
+  const locationMap = {
+    LAND: "Bradbury Landing",
+    DRILL: "Mary Anning & Grocken Drill Sites",
+    CURRENT: "Current Location",
+    BEACH: "Ogunquit Beach",
+  };
+
+  const longLocation = locationMap[selectedLocation] || "Unknown Location";
 
   // Navigation
   const navigate = useNavigate();
@@ -34,15 +33,15 @@ const MapGall = () => {
   async function get() {
     setLoading(true);
     try {
-      const result = await getMapImgs(selectedLocation); // Res is a arr of objs with img_src key
+      let result = await getMapImgs(selectedLocation); // Res is a arr of objs with img_src key
 
       if (result.success) {
         console.log("API result:", result);
 
         //const concat = Array.prototype.concat(result.con)
-        const concat = result.concatArr.flatMap(item => item.img_src);
+        let concat = result.concatArr.flatMap((item) => item.img_src);
 
-        console.log(concat)
+        console.log(concat);
 
         setImages(concat);
         setTotalPhotos(concat.length);
@@ -62,7 +61,7 @@ const MapGall = () => {
 
   useEffect(() => {
     get();
-  }, []);
+  }, [selectedLocation]);
 
   return (
     <>
@@ -77,7 +76,31 @@ const MapGall = () => {
       </div>
 
       {selectedLocation === "DRILL" && (
-        <img className="w-full max-w-4xl h-auto mx-auto mb-10" src="/drill.png" />
+        <img
+          className="w-full max-w-4xl h-auto mx-auto mb-10"
+          src="/drill.png"
+        />
+      )}
+
+      {selectedLocation === "CURRENT" && (
+        <img
+          className="w-full max-w-4xl h-auto mx-auto mb-10"
+          src="/current.png"
+        />
+      )}
+
+      {selectedLocation === "LAND" && (
+        <img
+          className="w-full max-w-4xl h-auto mx-auto mb-10"
+          src="/landing.png"
+        />
+      )}
+
+      {selectedLocation === "BEACH" && (
+        <img
+          className="w-full max-w-4xl h-auto mx-auto mb-10"
+          src="/beach.png"
+        />
       )}
 
       <div>
