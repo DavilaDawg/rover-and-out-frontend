@@ -89,8 +89,8 @@ export const getMapImgs = async (location) => {
       sol1 = 4065;
       range = 37;
     } else if (location === "DRILL") {
-      sol1 = 2890;
-      range = 10;
+      sol1 = 2371; //2890 and 2405 and 2136
+      range = 20;
     }
 
     let responsePhotosArr = [];
