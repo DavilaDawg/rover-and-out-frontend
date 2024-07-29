@@ -19,6 +19,10 @@ const MapGall = () => {
     DRILL: "Mary Anning & Grocken Drill Sites",
     CURRENT: "Current Location",
     BEACH: "Ogunquit Beach",
+    DINGO: "Dingo Gap",
+    HILLS: "Pathrump Hills",
+    MURRAY: "Nurray Buttes",
+    YELLOW: "Yellowknife Bay"
   };
 
   const longLocation = locationMap[selectedLocation] || "Unknown Location";
