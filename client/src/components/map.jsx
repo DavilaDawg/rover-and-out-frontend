@@ -32,6 +32,13 @@ const Map = () => {
     <div className="relative mb-10">
       <p className="text-5xl font-semibold pt-2 pl-2">Select location</p>
 
+      <Button
+        onClick={handleBack}
+        className="absolute top-4 right-5 bg-gray-600 text-gray-300 rounded hover:bg-gray-600 transition-colors"
+      >
+        Back
+      </Button>
+
       <div className="relative pt-4">
         <img className="w-full h-auto" src="/roverPath.png" alt="Rover path" />
 
@@ -63,13 +70,6 @@ const Map = () => {
             Current Location
             </p>
           </div>
-
-          <Button
-            className="absolute bottom-8 ml-10 bg-gray-800 text-white px-4 py-2 rounded"
-            onClick={toCurrent}
-          >
-            Current Location
-          </Button>
         </div>
       </div>
     </div>
