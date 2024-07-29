@@ -193,14 +193,14 @@ export const getFavsService = async () => {
   }
 };
 
-export const postFavService = async (dataURL, metaData) => {
+export const postFavService = async (dataURL) => {
   try {
     const response = await fetch(`${server_API_root}/favs`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ imageData: dataURL, metaData: metaData }), // error here!!!
+      body: JSON.stringify({ imageData: dataURL }), 
     });
 
     const result = await response.json();
