@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
 import { getNasaInfo } from "../services/galleryService"; // after moving fetchImagesAndManifest to server wont need this here anymore
-import { getManifestInfo } from "../services/galleryService";
+import { postFavService } from "../services/galleryService";
 
 const Gallery = () => {
   const navigate = useNavigate();
@@ -50,7 +50,6 @@ const Gallery = () => {
     setLoading(true);
 
     try {
-      //const info = await getManifestInfo(sol);
       const result = await getNasaInfo(sol);
 
       if (result.success) {
@@ -153,26 +152,31 @@ const Gallery = () => {
           <div className="flex flex-wrap justify-center gap-4">
             {images.length > 0 ? (
               images.map((image, index) => (
-                <button
-                  key={index}
-                  className="border border-gray-600 rounded overflow-hidden"
-                  onClick={() =>
-                    navigate("/imageViewer", {
-                      state: {
-                        imageUrl: image,
-                        isBoring: false,
-                        sol: sol,
-                        filter: camToFilter,
-                      },
-                    })
-                  }
-                >
-                  <img
-                    src={image}
-                    alt={`Mars Rover Image ${index}`}
-                    className="w-60 h-48 object-cover"
-                  />
-                </button>
+                <>
+                  <button
+                    key={index}
+                    className="border border-gray-600 rounded overflow-hidden"
+                    onClick={() =>
+                      navigate("/imageViewer", {
+                        state: {
+                          imageUrl: image,
+                          isBoring: false,
+                          sol: sol,
+                          filter: camToFilter,
+                        },
+                      })
+                    }
+                  >
+                    <img
+                      src={image}
+                      alt={`Mars Rover Image ${index}`}
+                      className="w-60 h-48 object-cover"
+                    />
+                  </button>
+                  <button onClick={postFavService(image)}>
+                    +
+                  </button>
+                </>
               ))
             ) : (
               <p className="text-center col-span-full">

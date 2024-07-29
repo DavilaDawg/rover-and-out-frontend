@@ -2,6 +2,7 @@
 
 const server_API_root = "http://localhost:3000";
 
+// Image and data funcs:
 export const getNasaInfo = async (sol = 0) => {
   try {
     const response = await fetch(`${server_API_root}/api/images/${sol}`, {
@@ -75,6 +76,7 @@ export const getManifestInfo = async () => {
   }
 };
 
+// Map service:
 export const getMapImgs = async (location) => {
   try {
     let sol1;
@@ -137,12 +139,14 @@ export const getMapImgs = async (location) => {
   }
 };
 
+
+// Annotation func (not working)
 export const postAnnotations = async (dataURL, metaData) => {
   try {
     const response = await fetch(`${server_API_root}/save`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ imageData: dataURL, metaData: metaData }),
     });
@@ -150,16 +154,68 @@ export const postAnnotations = async (dataURL, metaData) => {
     const result = await response.json();
 
     if (!response.ok) {
-      console.error('Error details:', result); 
+      console.error("Error details:", result);
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
     if (result.success) {
-      console.log('Image saved successfully');
+      console.log("Image saved successfully");
     } else {
-      console.error('Error saving image:', result.error);
+      console.error("Error saving image:", result.error);
     }
   } catch (error) {
-    console.error('Unexpected error:', error);
+    console.error("Unexpected error:", error);
   }
-}
+};
+
+
+// Fav funcs:
+export const getFavsService = async () => {
+  try {
+    const response = await fetch(`${server_API_root}/favs`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status === 503 || response.status === 500) {
+      return {
+        success: false,
+        error: "Server Unavailable. Please try again later.",
+      };
+    }
+
+    const data = await response.json();
+
+    return { success: true, data };
+  } catch (error) {
+    return { success: false, error: "Error fetching favs from backend" };
+  }
+};
+
+export const postFavService = async (dataURL) => {
+  try {
+    const response = await fetch(`${server_API_root}/favs`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ image: dataURL }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      console.error("Error details:", result);
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    if (result.success) {
+      console.log("Image saved successfully");
+    } else {
+      console.error("Error saving favs:", result.error);
+    }
+  } catch (error) {
+    console.error("Unexpected error:", error);
+  }
+};
