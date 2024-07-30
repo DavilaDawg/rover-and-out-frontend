@@ -47,9 +47,12 @@ const Favorites = () => {
 
   useEffect(() => {
     getFavs();
-    setDeleting(false)
   }, [deleting]);
 
+  async function handleDelete(image) {
+    await deleteFavService(image);
+    setDeleting(!deleting); // Trigger data refetch by toggling `deleting`
+  }
   /*navigate("/imageViewer", {
                         state: {
                           imageUrl: image,
@@ -68,13 +71,14 @@ const Favorites = () => {
         Back
       </Button>
 
-      {loading && <p className="text-center text-2xl mt-[0.8%] animate-fade-in-out">Loading images...</p>}
+      {error && (
+        <p className="text-center text-red-400 text-2xl mt-[0.8%]">{error}</p>
+      )}
 
-      {error && <p className="text-center text-red-400 text-2xl mt-[0.8%]">{error}</p>}
-
-      {!loading && !error && (
         <>
-          <p className="text-center text-2xl mt-[0.8%]">Total Favorites: {totalFavs}</p>
+          <p className="text-center text-2xl mt-[0.8%]">
+            Total Favorites: {totalFavs}
+          </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-[0.9%]">
             {images.length > 0 ? (
@@ -92,10 +96,7 @@ const Favorites = () => {
                   </button>
                   <button
                     className="absolute bottom-2 right-2 bg-white text-gray-700 text-xs font-black rounded-sm px-2 py-1 border border-gray-300 shadow-sm hover:bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"
-                    onClick={() => {
-                      deleteFavService(image);
-                      setDeleting(true)
-                    }}
+                    onClick={() => handleDelete(image)}
                   >
                     Remove
                   </button>
@@ -106,7 +107,7 @@ const Favorites = () => {
             )}
           </div>
         </>
-      )}
+
     </>
   );
 };
