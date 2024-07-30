@@ -191,14 +191,14 @@ export const getFavsService = async () => {
   }
 };
 
-export const postFavService = async (dataURL) => {
+export const postFavService = async (dataURL, favSol) => {
   try {
     const response = await fetch(`${server_API_root}/favs`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ imageData: dataURL }),
+      body: JSON.stringify({ imageData: dataURL , sol: favSol }),
     });
 
     const result = await response.json();
