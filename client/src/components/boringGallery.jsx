@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
 import { getNasaInfo } from "../services/galleryService";
-import { getManifestInfo } from "../services/galleryService";
+import { postFavService } from "../services/galleryService";
+
 
 const BoringGallery = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const BoringGallery = () => {
 
   const handleInspect = (image) => {
     navigate("/imageViewer", {
-      state: { imageUrl: image, isBoring: true , sol: sol},
+      state: { imageUrl: image, isBoring: true, sol: sol },
     });
   };
 
@@ -88,11 +88,11 @@ const BoringGallery = () => {
       </div>
 
       <Button
-          onClick={handleBack}
-          className="absolute top-4 right-4 bg-gray-600 text-gray-300 rounded hover:bg-gray-600 transition-colors"
-        >
-          Back
-        </Button>
+        onClick={handleBack}
+        className="absolute top-4 right-4 bg-gray-600 text-gray-300 rounded hover:bg-gray-600 transition-colors"
+      >
+        Back
+      </Button>
 
       <div className="flex justify-center mt-4 space-x-2">
         <Button
@@ -116,17 +116,24 @@ const BoringGallery = () => {
           <div className="flex flex-wrap justify-center gap-4">
             {images.length > 0 ? (
               images.map((image, index) => (
-                <button
-                  key={index}
-                  className="border border-gray-600 rounded overflow-hidden"
-                  onClick={() => handleInspect(image)} // Image is url
-                >
-                  <img
-                    src={image}
-                    alt={`Mars Rover Image ${index}`}
-                    className="w-60 h-48 object-cover"
-                  />
-                </button>
+                <div key={index} className="relative group">
+                  <button
+                    className="rounded overflow-hidden"
+                    onClick={() => handleInspect(image)}
+                  >
+                    <img
+                      src={image}
+                      alt={`Mars Rover Image ${index}`}
+                      className="w-60 h-48 object-cover"
+                    />
+                  </button>
+                  <button
+                    className="absolute bottom-2 right-2 bg-white text-gray-700 text-xs font-black rounded-sm px-2 py-2 border border-gray-300 shadow-sm hover:bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"
+                    onClick={() => postFavService(image)}
+                  >
+                    Add Favorite
+                  </button>
+                </div>
               ))
             ) : (
               <p className="text-center col-span-full">

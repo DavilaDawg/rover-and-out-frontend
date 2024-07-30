@@ -154,7 +154,7 @@ const Gallery = () => {
               images.map((image, index) => (
                 <div key={index} className="relative flex flex-col group">
                   <button
-                    className="border border-gray-600 rounded overflow-hidden"
+                    className="rounded overflow-hidden"
                     onClick={() =>
                       navigate("/imageViewer", {
                         state: {

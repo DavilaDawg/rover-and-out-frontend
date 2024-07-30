@@ -46,12 +46,14 @@ const Favorites = () => {
   }
 
   useEffect(() => {
+    console.log("fetching favs")
     getFavs();
   }, [deleting]);
 
   async function handleDelete(image) {
+    console.log("attempting to delete: ", image)
     await deleteFavService(image);
-    setDeleting(!deleting); // Trigger data refetch by toggling `deleting`
+    setDeleting(true)
   }
   /*navigate("/imageViewer", {
                         state: {
