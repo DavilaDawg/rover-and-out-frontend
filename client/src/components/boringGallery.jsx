@@ -10,7 +10,7 @@ const BoringGallery = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [sol, setSol] = useState(1);
+  const [sol, setSol] = useState(0);
   const [submittedSol, setSubmittedSol] = useState(null);
   const [images, setImages] = useState([]); // Arr of urls
   const [totalPhotos, setTotalPhotos] = useState(0);

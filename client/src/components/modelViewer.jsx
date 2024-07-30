@@ -18,9 +18,7 @@ export const ModelViewer = () => {
           intensity={2}
         />
         <pointLight position={[0, 0, -10]} intensity={1.5} /> {/* Light at the back for enhanced illumination */}
-        <Suspense fallback={<div>Loading model...</div>}>
         <Rover2 scale={1.5} />
-          </Suspense>
         <OrbitControls />
       </Canvas>
     </div>

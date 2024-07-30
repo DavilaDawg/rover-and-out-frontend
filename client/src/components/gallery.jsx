@@ -11,7 +11,7 @@ const Gallery = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [sol, setSol] = useState(1);
+  const [sol, setSol] = useState(0);
   const [submittedSol, setSubmittedSol] = useState(null);
   const [images, setImages] = useState([]); // Arr of urls
   const [totalPhotos, setTotalPhotos] = useState(0);
@@ -124,12 +124,21 @@ const Gallery = () => {
           min="0"
           className="w-24 px-2 py-1 border border-gray-600 rounded bg-gray-700 text-white"
         />
-        <button
-          onClick={handleSubmit}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors ml-2"
-        >
-          Submit
-        </button>
+        {!loading ? (
+          <button
+            onClick={handleSubmit}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors ml-2 "
+          >
+            Submit
+          </button>
+        ) : (
+          <button
+            className="px-4 py-2 bg-gray-600 text-white rounded ml-2"
+            disabled={true}
+          >
+            Submit
+          </button>
+        )}
       </div>
 
       <div className="flex justify-center mt-4 space-x-2">
