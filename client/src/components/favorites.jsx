@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getFavsService } from "@/services/galleryService";
 import { deleteFavService } from "@/services/galleryService";
@@ -7,9 +7,6 @@ import { Button } from "./ui/button";
 const Favorites = () => {
   const [images, setImages] = useState([]); // Arr of urls
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [totalFavs, setTotalFavs] = useState(0);
-  const [deleting, setDeleting] = useState(false);
 
   //Navigation:
   const navigate = useNavigate();
@@ -20,8 +17,6 @@ const Favorites = () => {
 
   // Fetch images:
   async function getFavs() {
-    setLoading(true);
-
     try {
       const result = await getFavsService();
 
@@ -30,30 +25,23 @@ const Favorites = () => {
 
         const urls = result.data.map((img) => img.url);
         setImages(urls);
-        setTotalFavs(urls.length);
-        setError(null);
       } else {
-        setImages([]);
         setError(result.error || "An unexpected error occurred in service.");
       }
     } catch (error) {
       console.error("Unexpected error in client:", error);
-      setImages([]);
       setError("An unexpected error occurred in client.");
-    } finally {
-      setLoading(false);
     }
   }
 
   useEffect(() => {
-    console.log("fetching favs")
     getFavs();
-  }, [deleting]);
+  }, []);
 
   async function handleDelete(image) {
-    console.log("attempting to delete: ", image)
-    await deleteFavService(image);
-    setDeleting(true)
+    await deleteFavService(image); // Updating db
+    const updatedImages = images.filter((el) => el !== image); // To rerender page 
+    setImages(updatedImages);
   }
   /*navigate("/imageViewer", {
                         state: {
@@ -77,39 +65,38 @@ const Favorites = () => {
         <p className="text-center text-red-400 text-2xl mt-[0.8%]">{error}</p>
       )}
 
-        <>
-          <p className="text-center text-2xl mt-[0.8%]">
-            Total Favorites: {totalFavs}
-          </p>
+      <>
+        <p className="text-center text-2xl mt-[0.8%]">
+          Total Favorites: {images.length}
+        </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mt-[0.9%]">
-            {images.length > 0 ? (
-              images.map((image, index) => (
-                <div key={index} className="relative flex flex-col group">
-                  <button
-                    className="rounded overflow-hidden"
-                    onClick={() => console.log("navigate to imageViewer")}
-                  >
-                    <img
-                      src={image}
-                      alt={`Mars Rover Image ${index}`}
-                      className="w-60 h-48 object-cover"
-                    />
-                  </button>
-                  <button
-                    className="absolute bottom-2 right-2 bg-white text-gray-700 text-xs font-black rounded-sm px-2 py-1 border border-gray-300 shadow-sm hover:bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"
-                    onClick={() => handleDelete(image)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              ))
-            ) : (
-              <div></div>
-            )}
-          </div>
-        </>
-
+        <div className="flex flex-wrap justify-center gap-4 mt-[0.9%]">
+          {images.length > 0 ? (
+            images.map((image, index) => (
+              <div key={index} className="relative flex flex-col group">
+                <button
+                  className="rounded overflow-hidden"
+                  onClick={() => console.log("navigate to imageViewer")}
+                >
+                  <img
+                    src={image}
+                    alt={`Mars Rover Image ${index}`}
+                    className="w-60 h-48 object-cover"
+                  />
+                </button>
+                <button
+                  className="absolute bottom-2 right-2 bg-white text-gray-700 text-xs font-black rounded-sm px-2 py-1 border border-gray-300 shadow-sm hover:bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={() => handleDelete(image)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))
+          ) : (
+            <div></div>
+          )}
+        </div>
+      </>
     </>
   );
 };

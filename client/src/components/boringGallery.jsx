@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
 import { getNasaInfo } from "../services/galleryService";
 import { postFavService } from "../services/galleryService";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BoringGallery = () => {
   const navigate = useNavigate();
@@ -11,10 +12,10 @@ const BoringGallery = () => {
   const [loading, setLoading] = useState(true);
   const [sol, setSol] = useState(1);
   const [submittedSol, setSubmittedSol] = useState(null);
-  const [images, setImages] = useState([]); // arr of urls
+  const [images, setImages] = useState([]); // Arr of urls
   const [totalPhotos, setTotalPhotos] = useState(0);
 
-  //Navigation:
+  // Navigation:
   function handleBack() {
     navigate("/gallDash");
   }
@@ -33,7 +34,6 @@ const BoringGallery = () => {
     setLoading(true);
 
     try {
-      //const info = await getManifestInfo(sol);
       const result = await getNasaInfo(sol);
 
       if (result.success) {
@@ -129,7 +129,13 @@ const BoringGallery = () => {
                   </button>
                   <button
                     className="absolute bottom-2 right-2 bg-white text-gray-700 text-xs font-black rounded-sm px-2 py-2 border border-gray-300 shadow-sm hover:bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"
-                    onClick={() => postFavService(image, sol)}
+                    onClick={() => {
+                      postFavService(image, sol);
+                      toast.info("Added to favorites", {
+                        position: "top-right",
+                        autoClose: 1000, // [ms]
+                      });
+                    }}
                   >
                     Add Favorite
                   </button>

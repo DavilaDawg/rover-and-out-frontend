@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
 import { getNasaInfo } from "../services/galleryService";
 import { postFavService } from "../services/galleryService";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Gallery = () => {
   const navigate = useNavigate();
@@ -174,7 +176,13 @@ const Gallery = () => {
                   </button>
                   <button
                     className="absolute bottom-2 right-2 bg-white text-gray-700 text-xs font-black rounded-sm px-2 py-2 border border-gray-300 shadow-sm hover:bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"
-                    onClick={() => postFavService(image, sol)}
+                    onClick={() => {
+                      postFavService(image, sol);
+                      toast.info("Added to favorites", {
+                        position: "top-right",
+                        autoClose: 1000, // [ms]
+                      });
+                    }}
                   >
                     Add Favorite
                   </button>
