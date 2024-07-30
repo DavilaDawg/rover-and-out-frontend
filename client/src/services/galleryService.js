@@ -2,7 +2,7 @@
 
 const server_API_root = "http://localhost:3000";
 
-// Images and info funcs 
+// Images and info funcs
 export const getNasaInfo = async (sol = 0) => {
   try {
     const response = await fetch(`${server_API_root}/api/images/${sol}`, {
@@ -139,7 +139,6 @@ export const getMapImgs = async (location) => {
   }
 };
 
-
 // Annotation func (not working)
 export const postAnnotations = async (dataURL, metaData) => {
   try {
@@ -167,7 +166,6 @@ export const postAnnotations = async (dataURL, metaData) => {
     console.error("Unexpected error:", error);
   }
 };
-
 
 // Fav funcs:
 export const getFavsService = async () => {
@@ -200,7 +198,7 @@ export const postFavService = async (dataURL) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ imageData: dataURL }), 
+      body: JSON.stringify({ imageData: dataURL }),
     });
 
     const result = await response.json();
@@ -221,5 +219,10 @@ export const postFavService = async (dataURL) => {
 };
 
 export const deleteFavService = async (dataURL) => {
-  console.log("deleting: ", dataURL)
-}
+  console.log("deleting: ", dataURL);
+  const encodedURL =  encodeURIComponent(dataURL);
+  await fetch(`${server_API_root}/favs/${encodedURL}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
+};

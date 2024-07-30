@@ -98,14 +98,14 @@ const Gallery = () => {
 
       <Button
         onClick={navigateDash}
-        className="absolute top-4 right-20 bg-gray-600 text-white px-4 py-2 rounded mr-5"
+        className="absolute top-4 right-20 bg-gray-600 text-white mr-5"
       >
         Dashboard
       </Button>
 
       <Button
         onClick={handleBack}
-        className="absolute top-4 right-5 bg-gray-600 text-gray-300 rounded hover:bg-gray-600 transition-colors"
+        className="absolute top-4 right-5 bg-gray-600 text-white "
       >
         Back
       </Button>
