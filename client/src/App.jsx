@@ -20,6 +20,7 @@ import SelectCamPage from "@/components/selectCamPage";
 import BoringGallery from "./components/boringGallery";
 import GallDash from "./components/gallDash";
 import MapGall from "./components/mapGall";
+import Favorites from "./components/favorites";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
             <Route path="/selectCamPage" element={<SelectCamPage />} />
             <Route path="/gallDash" element={<GallDash />} />
             <Route path="/mapGall/:selectedLocation" element={<MapGall />} />
+            <Route path="/favorites" element={<Favorites />} />
           </Routes>
         </Router>
       </ThemeProvider>

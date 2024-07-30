@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
-import { getNasaInfo } from "../services/galleryService"; // after moving fetchImagesAndManifest to server wont need this here anymore
+import { getNasaInfo } from "../services/galleryService";
 import { postFavService } from "../services/galleryService";
 
 const Gallery = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [sol, setSol] = useState(0);
+  const [sol, setSol] = useState(1);
   const [submittedSol, setSubmittedSol] = useState(null);
-  const [images, setImages] = useState([]); // arr of urls
+  const [images, setImages] = useState([]); // Arr of urls
   const [totalPhotos, setTotalPhotos] = useState(0);
 
   const { camToFilter } = useParams(); // Initalizing a param to set later
@@ -33,7 +33,7 @@ const Gallery = () => {
     camName = "Rover Hazard Avoidance Camera";
   }
 
-  //Navigation:
+  // Navigation:
   function handleBack() {
     navigate("/selectCamPage");
   }
@@ -81,7 +81,7 @@ const Gallery = () => {
   }, [submittedSol]);
 
   const handleSubmit = () => {
-    // on submit the total pics should be shown!!!! FIXXXXXXXXXXXXXXXXXXXXXxxxx
+    // on submit the total pics should be shown!!!! FIXX
     setSubmittedSol(sol);
   };
 
@@ -152,9 +152,8 @@ const Gallery = () => {
           <div className="flex flex-wrap justify-center gap-4">
             {images.length > 0 ? (
               images.map((image, index) => (
-                <>
+                <div key={index} className="relative flex flex-col group">
                   <button
-                    key={index}
                     className="border border-gray-600 rounded overflow-hidden"
                     onClick={() =>
                       navigate("/imageViewer", {
@@ -173,10 +172,13 @@ const Gallery = () => {
                       className="w-60 h-48 object-cover"
                     />
                   </button>
-                  <button onClick={()=> postFavService(image)}>
-                    +
+                  <button
+                    className="absolute bottom-2 right-2 bg-white text-gray-700 text-xs font-black rounded-sm px-2 py-2 border border-gray-300 shadow-sm hover:bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"
+                    onClick={() => postFavService(image)}
+                  >
+                    Add Favorite
                   </button>
-                </>
+                </div>
               ))
             ) : (
               <p className="text-center col-span-full">

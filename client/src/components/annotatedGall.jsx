@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 const AnnotatedGallery = () => {
 
   return (
-   <p>hi</p>
+   <p>In progress</p>
   );
 };
 

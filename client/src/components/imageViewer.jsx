@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom"; // UseLocation hook
 import { Button } from "@/components/ui/button.jsx";
 import * as markerjs2 from "markerjs2";
 import { postAnnotations } from "@/services/galleryService";
+import { postFavService } from "@/services/galleryService";
 
 const ImageViewer = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const ImageViewer = () => {
 
   const { imageUrl, isBoring, sol, filter } = location.state || {};
   const [maState, setMaState] = useState(null);
+  const [message, setMessage] = useState(false);
 
   // Navigation:
   if (!imageUrl) {
@@ -68,36 +70,50 @@ const ImageViewer = () => {
 
   return (
     <>
-      <div className="mb-12 pb-1 bg-gray-900">
+      <div className="pb-1 mt-1">
         <Button
           onClick={handleBack}
-          className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded mr-5"
+          className="absolute top-4 right-[0%] bg-gray-800 text-white px-4 py-2 mr-5"
         >
           Back
         </Button>
+
         <Button
           onClick={navigateDash}
-          className="absolute top-4 right-56 bg-gray-800 text-white px-4 py-2 rounded mr-5"
+          className="absolute top-4 right-[3%] bg-gray-800 text-white px-4 py-2 mr-5"
         >
           Dashboard
         </Button>
 
+        <Button
+          className="absolute top-4 right-[49.2%] bg-gray-800 text-white px-4 py-2 mr-5"
+          onClick={() => {
+            setMessage(true);
+            postFavService(imageUrl);
+            setTimeout(() => {
+              setMessage(false);
+            }, 2000);
+          }}
+        >
+          Add Favorite
+        </Button>
+
+        <Button
+          onClick={handleSave}
+          className="absolute top-4 right-[43.5%] bg-gray-800 text-white px-4 py-2"
+        >
+          Save Annotations
+        </Button>
+
+        {message && <p className="absolute mt-[2.55%] ml-[48%]">Added to Favorites</p>}
+
         {filter ? (
-          <h1 className="text-6xl mb-3">
+          <h1 className="text-6xl mb-10 ml-2 pb-8">
             Sol: {sol} Camera: {filter}
           </h1>
         ) : (
-          <h1 className="text-6xl ml-2"> Sol: {sol} </h1>
+          <h1 className="text-6xl mb-10 ml-2 pb-8"> Sol: {sol} </h1>
         )}
-      </div>
-
-      <div className=" bg-gray-900">
-        <button
-          onClick={handleSave}
-          className="absolute top-4 right-28 bg-gray-800 text-white px-4 py-2 rounded"
-        >
-          Save Image
-        </button>
       </div>
 
       <img

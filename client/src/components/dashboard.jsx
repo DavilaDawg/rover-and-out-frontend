@@ -25,6 +25,10 @@ const Dashboard = () => {
     navigate("/gallDash");
   }
 
+  function handleFavs() {
+    navigate("/favorites");
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex flex-col items-center justify-center flex-grow">
@@ -50,8 +54,14 @@ const Dashboard = () => {
             Super Cool Data
           </Button>
           <Button
-            onClick={handleLogOut}
+            onClick={handleFavs}
             className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg"
+          >
+            Favorites
+          </Button>
+          <Button
+            onClick={handleLogOut}
+            className="text-4xl font-semibold px-12 py-6 w-80 h-25 rounded-lg mt-16"
           >
             Log Out
           </Button>

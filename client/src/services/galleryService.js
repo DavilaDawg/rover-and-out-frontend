@@ -219,3 +219,7 @@ export const postFavService = async (dataURL) => {
     console.error("Unexpected error:", error);
   }
 };
+
+export const deleteFavService = async (dataURL) => {
+  console.log("deleting: ", dataURL)
+}
