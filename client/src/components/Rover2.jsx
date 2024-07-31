@@ -94,7 +94,12 @@ export const Rover2 = (props) => {
           material={materials.internals}
         />
 
-        <SphereComponent></SphereComponent>
+        {/*Right nav cam:*/}
+        <SphereComponent radius={0.07} position={[-1.35, 1.72, -0.3]}></SphereComponent>
+
+        {/*Left nav cam:*/}
+        <SphereComponent radius={0.07} position={[-1.8, 1.72, -0.3]}></SphereComponent>
+        
 
          {hoveredMesh && (
         <Tooltip
