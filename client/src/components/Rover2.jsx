@@ -34,15 +34,15 @@ export const Rover2 = (props) => {
   }
 
   function handleChem() {
-    console.log("chem")
+    navigate("/gallery/CHEM");
   }
 
   function handleMast() {
-    console.log("mast")
+    console.log("mast");
   }
 
   function handleDescent() {
-    console.log("descent")
+    console.log("descent");
   }
 
   useEffect(() => {
@@ -55,32 +55,12 @@ export const Rover2 = (props) => {
         <mesh geometry={nodes.Object_4.geometry} material={materials.wheels} />
         <mesh geometry={nodes.Object_5.geometry} material={materials.tex_02} />
         <mesh geometry={nodes.Object_6.geometry} material={materials.tex_01} />
-        <mesh
-          onClick={handleRear}
-          geometry={nodes.Object_7.geometry}
-          material={materials.parts_AO}
-          onPointerOver={() =>
-            handlePointerOver("Rover Hazard Avoidance Camera")
-          }
-          onPointerOut={handlePointerOut}
-        />
-        <mesh
-          onClick={handleProb}
-          geometry={nodes.Object_8.geometry}
-          material={materials.tex_03}
-          onPointerOver={() => handlePointerOver("Mars Hand Lens Imager")}
-          onPointerOut={handlePointerOut}
-        />
+        <mesh geometry={nodes.Object_7.geometry} material={materials.parts_AO} />
+        <mesh geometry={nodes.Object_8.geometry} material={materials.tex_03} />
         <mesh geometry={nodes.Object_9.geometry} material={materials.tex_05} />
         <mesh geometry={nodes.Object_10.geometry} material={materials.tex_04} />
-        <mesh
-          geometry={nodes.Object_11.geometry}
-          material={materials.tex_03a}
-        />
-        <mesh
-          geometry={nodes.Object_12.geometry}
-          material={materials.internals}
-        />
+        <mesh geometry={nodes.Object_11.geometry} material={materials.tex_03a} />
+        <mesh geometry={nodes.Object_12.geometry} material={materials.internals} />
 
         {/*Right nav cam:*/}
         <SphereComponent
@@ -109,7 +89,7 @@ export const Rover2 = (props) => {
           handleClick={handleProb}
           handlePointerOver={() => handlePointerOver("Mars Hand Lens Imager")}
           handlePointerOut={handlePointerOut}
-          hovered={hoveredMesh === "Mars Hand Lens Imager"} 
+          hovered={hoveredMesh === "Mars Hand Lens Imager"}
         ></SphereComponent>
 
         {/*Right rear hazcam:*/}
@@ -117,9 +97,11 @@ export const Rover2 = (props) => {
           radius={0.11}
           position={[-0.56, 0.55, -2.1]}
           handleClick={handleRear}
-          handlePointerOver={() => handlePointerOver("Rover Hazard Avoidance Camera")}
+          handlePointerOver={() =>
+            handlePointerOver("Rover Hazard Avoidance Camera")
+          }
           handlePointerOut={handlePointerOut}
-          hovered={hoveredMesh === "Rover Hazard Avoidance Camera"} 
+          hovered={hoveredMesh === "Rover Hazard Avoidance Camera"}
         ></SphereComponent>
 
         {/*Left rear hazcam:*/}
@@ -127,9 +109,11 @@ export const Rover2 = (props) => {
           radius={0.11}
           position={[-1.56, 0.55, -2.1]}
           handleClick={handleRear}
-          handlePointerOver={() => handlePointerOver("Rover Hazard Avoidance Camera")}
+          handlePointerOver={() =>
+            handlePointerOver("Rover Hazard Avoidance Camera")
+          }
           handlePointerOut={handlePointerOut}
-          hovered={hoveredMesh === "Rover Hazard Avoidance Camera"} 
+          hovered={hoveredMesh === "Rover Hazard Avoidance Camera"}
         ></SphereComponent>
 
         {/*Front left hazcams:*/}
@@ -137,9 +121,11 @@ export const Rover2 = (props) => {
           radius={0.18}
           position={[-1.02, 0.5, -0.28]}
           handleClick={handleRear}
-          handlePointerOver={() => handlePointerOver("Rover Hazard Avoidance Camera")}
+          handlePointerOver={() =>
+            handlePointerOver("Rover Hazard Avoidance Camera")
+          }
           handlePointerOut={handlePointerOut}
-          hovered={hoveredMesh === "Rover Hazard Avoidance Camera"} 
+          hovered={hoveredMesh === "Rover Hazard Avoidance Camera"}
         ></SphereComponent>
 
         {/*ChemCam:*/}
@@ -149,7 +135,7 @@ export const Rover2 = (props) => {
           handleClick={handleChem}
           handlePointerOver={() => handlePointerOver("ChemCam")}
           handlePointerOut={handlePointerOut}
-          hovered={hoveredMesh === "ChemCam"} 
+          hovered={hoveredMesh === "ChemCam"}
         ></SphereComponent>
 
         {/*Mast right:*/}
@@ -159,7 +145,7 @@ export const Rover2 = (props) => {
           handleClick={handleMast}
           handlePointerOver={() => handlePointerOver("Mastcam")}
           handlePointerOut={handlePointerOut}
-          hovered={hoveredMesh === "Mastcam"} 
+          hovered={hoveredMesh === "Mastcam"}
         ></SphereComponent>
 
         {/*Mast left:*/}
@@ -169,7 +155,7 @@ export const Rover2 = (props) => {
           handleClick={handleMast}
           handlePointerOver={() => handlePointerOver("Mastcam")}
           handlePointerOut={handlePointerOut}
-          hovered={hoveredMesh === "Mastcam"} 
+          hovered={hoveredMesh === "Mastcam"}
         ></SphereComponent>
 
         {/*Mars Descent Imager:*/}
@@ -179,15 +165,10 @@ export const Rover2 = (props) => {
           handleClick={handleDescent}
           handlePointerOver={() => handlePointerOver("Mars Descent Imager")}
           handlePointerOut={handlePointerOut}
-          hovered={hoveredMesh === "Mars Descent Imager"} 
+          hovered={hoveredMesh === "Mars Descent Imager"}
         ></SphereComponent>
 
-        {hoveredMesh && (
-          <Tooltip
-            position={[-1, 2.5, -1]} 
-            text={hoveredMesh}
-          />
-        )}
+        {hoveredMesh && <Tooltip position={[-1, 2.5, -1]} text={hoveredMesh} />}
       </group>
     </group>
   );

@@ -34,6 +34,9 @@ const Gallery = () => {
     cameraDetails =
       "Detects obstacles, ensuring safe navigation of the rover across the Martian surface.";
     camName = "Rover Hazard Avoidance Camera";
+  } else if (camToFilter === "CHEM") {
+    cameraDetails = "Uses a laser to vaporize materials then later analyzes their elemental composition using an on-board spectrograph."
+    camName = "ChemCam"
   }
 
   // Navigation:
