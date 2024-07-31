@@ -1,34 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
+import { BallTriangle } from "react-loader-spinner";
 import { getManifestInfo } from "@/services/galleryService";
 import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
 // Register the components for Chart.js
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Graphs = () => {
   const navigate = useNavigate();
   const [info, setInfo] = useState({});
   const [imgsPerDay, setImgsPerDay] = useState([]); // Arr of objs
+  const [loading, setLoading] = useState(true);
 
   function handleBack() {
     navigate("/dashboard");
   }
 
   async function fetchData() {
-    const result = await getManifestInfo();
-
-    if (result.success) {
-      const data = result.data.data;
-      setInfo(data);
-      setImgsPerDay(data.photos.map(photo => ({
-        sol: photo.sol,
-        total_photos: photo.total_photos
-      })));
-    } else {
-      console.log("An unexpected error occurred in service.");
+    try {
+      const result = await getManifestInfo();
+      setLoading(!true);
+      if (result.success) {
+        const data = result.data.data;
+        setInfo(data);
+        setImgsPerDay(
+          data.photos.map((photo) => ({
+            sol: photo.sol,
+            total_photos: photo.total_photos,
+          }))
+        );
+      } else {
+        console.log("An unexpected error occurred in service");
+      }
+    } catch (error) {
+      console.log("Caught: ",error);
     }
   }
 
@@ -41,14 +64,13 @@ const Graphs = () => {
   const maxSol = info.max_sol; // Last sol with images in API
   const totalPhotos = info.total_photos;
 
-  // Prepare data for the chart
   const chartData = {
-    labels: imgsPerDay.map(item => `Sol ${item.sol}`),
+    labels: imgsPerDay.map((item) => `Sol ${item.sol}`),
     datasets: [
       {
-        label: 'Total Photos per Sol',
-        data: imgsPerDay.map(item => item.total_photos),
-        borderColor: 'rgba(75, 192, 192, 1)',
+        label: "Total Photos per Sol",
+        data: imgsPerDay.map((item) => item.total_photos),
+        borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 3,
       },
     ],
@@ -64,6 +86,12 @@ const Graphs = () => {
           Back
         </Button>
       </div>
+
+      {loading && (
+        <div className="ml-[48%] mt-[15%]">
+          <BallTriangle></BallTriangle>
+        </div>
+      )}
 
       <div className="flex justify-center items-center mt-10">
         <div className="w-full max-w-screen-4xl h-[1000px] ml-60 mt-10">
@@ -93,7 +121,7 @@ const Graphs = () => {
               <p className="text-lg font-semibold text-gray-300">
                 Journey Duration:
               </p>
-              <p className="text-xl text-white">do math</p>
+              <p className="text-xl text-white">8 months and 11 days</p>
             </div>
             <div className="bg-gray-800 p-4 rounded-lg">
               <p className="text-lg font-semibold text-gray-300">

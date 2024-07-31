@@ -105,7 +105,7 @@ const BoringGallery = () => {
       </div>
 
       {loading && (
-        <div className="ml-[48%] mt-[20%]">
+        <div className="ml-[48%] mt-[17%]">
           <BallTriangle></BallTriangle>
         </div>
       )}

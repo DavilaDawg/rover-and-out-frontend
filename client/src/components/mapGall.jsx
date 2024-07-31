@@ -3,13 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
 import { getMapImgs } from "@/services/galleryService";
 import { useState, useEffect } from "react";
+import { BallTriangle } from "react-loader-spinner";
 
 const MapGall = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState([]); // arr of urls
-  const [totalPhotos, setTotalPhotos] = useState(0);
-  //const [currLocation, setCurrLocation] = useState('')
 
   const { selectedLocation } = useParams();
 
@@ -45,7 +44,6 @@ const MapGall = () => {
         let concat = result.concatArr.flatMap((item) => item.img_src);
 
         setImages(concat);
-        setTotalPhotos(concat.length);
         setError(null);
       } else {
         setImages([]);
@@ -105,7 +103,11 @@ const MapGall = () => {
       )}
 
       <div>
-        {loading && <p className="text-center mt-2">Loading images...</p>}
+        {loading && (
+          <div className="ml-[48%] mt-[10%]">
+            <BallTriangle></BallTriangle>
+          </div>
+        )}
         {error && <p className="text-center text-red-400 mt-2">{error}</p>}
 
         {!loading && !error && (
@@ -118,7 +120,8 @@ const MapGall = () => {
                     className="border border-gray-600 rounded overflow-hidden"
                     onClick={() => {
                       console.log("clicked");
-                      navigate("/imageViewer", { // make new imageViewer component that doesnt have these states!!!
+                      navigate("/imageViewer", {
+                        // make new imageViewer component that doesnt have these states!!!
                         state: {
                           imageUrl: image,
                           isBoring: false,

@@ -156,7 +156,7 @@ const Gallery = () => {
       </div>
 
       {loading && (
-        <div className="ml-[48%] mt-[15%]">
+        <div className="ml-[48%] mt-[17%]">
           <BallTriangle></BallTriangle>
         </div>
       )}

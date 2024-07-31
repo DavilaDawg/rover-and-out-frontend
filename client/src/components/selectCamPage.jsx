@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { ModelViewer } from "./modelViewer";
 
 const SelectCamPage = () => {
-  // Navigation:
   const navigate = useNavigate();
-
+  
   function handleBack() {
     navigate("/gallDash");
   }
