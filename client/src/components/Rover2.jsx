@@ -97,14 +97,14 @@ export const Rover2 = (props) => {
 
         {/*Right nav cam:*/}
         <SphereComponent
-          radius={0.07}
-          position={[-1.35, 1.72, -0.3]}
+          radius={0.05}
+          position={[-1.35, 1.72, -0.28]}
         ></SphereComponent>
 
         {/*Left nav cam:*/}
         <SphereComponent
-          radius={0.07}
-          position={[-1.8, 1.72, -0.3]}
+          radius={0.05}
+          position={[-1.8, 1.72, -0.28]}
         ></SphereComponent>
 
         {/*Mars Hand Lens Imager:*/}
@@ -113,20 +113,47 @@ export const Rover2 = (props) => {
           position={[-0.62, 1.66, 0.64]}
         ></SphereComponent>
 
-        {/*Right rear:*/}
+        {/*Right rear hazcam:*/}
         <SphereComponent
           radius={0.09}
           position={[-0.56, 0.55, -2.1]}
         ></SphereComponent>
 
-        {/*Left rear: */}
+        {/*Left rear hazcam:*/}
         <SphereComponent
           radius={0.09}
           position={[-1.56, 0.55, -2.1]}
         ></SphereComponent>
 
+        {/*Front left hazcams: */}
+        <SphereComponent
+        radius={0.18}
+        position={[-1.02, 0.5, -0.28]}></SphereComponent>
+
         {/*ChemCam:*/}
-        <SphereComponent></SphereComponent>
+        <SphereComponent
+          radius={0.08}
+          position={[-1.47, 1.88, -0.28]}
+        ></SphereComponent>
+
+        {/*Mast right:*/}
+        <SphereComponent
+        radius={0.05} 
+        position={[-1.46, 1.72, -0.28]}
+        ></SphereComponent>
+
+        {/*Mast left:*/}
+        <SphereComponent
+        radius={0.05} 
+        position={[-1.7, 1.72, -0.28]}
+        ></SphereComponent>
+
+        {/*Mars Descent Imager:*/}
+        <SphereComponent
+        radius={0.07}
+        position={[-0.42, 0.43, -0.42]}
+        ></SphereComponent>
+
 
         {hoveredMesh && (
           <Tooltip
