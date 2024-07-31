@@ -6,16 +6,15 @@ import { Button } from "./ui/button";
 
 const Favorites = () => {
   const [images, setImages] = useState([]); // Arr of urls
+  const [sols, setSols] = useState([]);
   const [error, setError] = useState(null);
 
-  //Navigation:
   const navigate = useNavigate();
 
   function handleBack() {
     navigate("/gallDash");
   }
 
-  // Fetch images:
   async function getFavs() {
     try {
       const result = await getFavsService();
@@ -24,7 +23,10 @@ const Favorites = () => {
         console.log("Favs result:", result.data);
 
         const urls = result.data.map((img) => img.url);
+        const dayArr = result.data.map((img) => img.sol);
+
         setImages(urls);
+        setSols(dayArr)
       } else {
         setError(result.error || "An unexpected error occurred in service.");
       }
@@ -40,18 +42,26 @@ const Favorites = () => {
 
   async function handleDelete(image) {
     await deleteFavService(image); // Updating db
-    const updatedImages = images.filter((el) => el !== image); // To rerender page 
+
+    const index = images.indexOf(image); // Find the index of the image to delete
+    
+    const updatedImages = images.filter((_, i) => i !== index);
+    const updatedSols = sols.filter((_, i) => i !== index);
+
     setImages(updatedImages);
+    setSols(updatedSols);
+    console.log(sols)
   }
+
   /*navigate("/imageViewer", {
-                        state: {
-                          imageUrl: image,
-                          isBoring: false,
-                          sol: sol,
-                          filter: camToFilter,
-                        },
-                      })
-                        */
+    state: {
+      imageUrl: image,
+      isBoring: false,
+      sol: sol,
+      filter: camToFilter,
+    },
+  })
+*/
   return (
     <>
       <Button

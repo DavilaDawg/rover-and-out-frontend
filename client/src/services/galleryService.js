@@ -40,11 +40,14 @@ export const getNasaInfo = async (sol = 0) => {
 
 export const getNasaInfoByCam = async (sol = 0, cam) => {
   try {
-    const response = await fetch(`${server_API_root}/api/images/${sol}/${cam.toLowerCase()}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${server_API_root}/api/images/${sol}/${cam.toLowerCase()}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!response.ok) {
       if (response.status === 403) {
@@ -233,7 +236,7 @@ export const postFavService = async (dataURL, favSol) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ imageData: dataURL , sol: favSol }),
+      body: JSON.stringify({ imageData: dataURL, sol: favSol }),
     });
 
     const result = await response.json();
@@ -255,7 +258,7 @@ export const postFavService = async (dataURL, favSol) => {
 
 export const deleteFavService = async (dataURL) => {
   console.log("deleting: ", dataURL);
-  const encodedURL =  encodeURIComponent(dataURL);
+  const encodedURL = encodeURIComponent(dataURL);
   await fetch(`${server_API_root}/favs/${encodedURL}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },

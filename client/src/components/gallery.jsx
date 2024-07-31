@@ -17,7 +17,6 @@ const Gallery = () => {
   const [totalPhotos, setTotalPhotos] = useState(0);
   const [inputValue, setInputValue] = useState(0); // Temporary to hold input value
 
-
   const { camToFilter } = useParams(); // Initalizing a param to set later
 
   // Camera details for conditional rendering:
@@ -54,32 +53,6 @@ const Gallery = () => {
   const navigateAnnotated = () => navigate("/annotated");
   const navigateDash = () => navigate("/dashboard");
 
-  async function get() {
-    setLoading(true);
-
-    try {
-      const result = await getNasaInfoByCam(sol, camToFilter);
-
-      if (result.success) {
-        console.log("API result:", result.data.photos);
-
-        const urls = result.data.photos.map((img) => img.img_src);
-        setImages(urls);
-        setTotalPhotos(urls.length);
-        setError(null);
-      } else {
-        setImages([]);
-        setError(result.error || "An unexpected error occurred in service.");
-      }
-    } catch (error) {
-      console.error("Unexpected error in client:", error);
-      setImages([]);
-      setError("An unexpected error occurred in client.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
   const handleSubmit = () => {
     setSol(inputValue);
   };
@@ -89,8 +62,45 @@ const Gallery = () => {
   };
 
   useEffect(() => {
+    const controller = new AbortController(); // Create a new AbortController
+    const { signal } = controller;
+
+    async function get() {
+      setLoading(true);
+
+      try {
+        const result = await getNasaInfoByCam(sol, camToFilter, { signal }); // Pass the signal to the fetch
+        if (result.success) {
+          console.log("API result:", result.data.photos);
+
+          const urls = result.data.photos.map((img) => img.img_src);
+          setImages(urls);
+          setTotalPhotos(urls.length);
+          setError(null);
+        } else {
+          setImages([]);
+          setError(result.error || "An unexpected error occurred in service.");
+        }
+      } catch (error) {
+        if (error.name === "AbortError") {
+          console.log("Fetch aborted");
+        } else {
+          console.error("Unexpected error in client:", error);
+          setImages([]);
+          setError("An unexpected error occurred in client.");
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
     get();
-  }, [sol]);
+
+    // Cleanup function to abort the fetch on component unmount
+    return () => {
+      controller.abort();
+    };
+  }, [sol, camToFilter]); 
 
   return (
     <div className="w-full min-h-screen p-4 text-white">
