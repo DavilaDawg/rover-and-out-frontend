@@ -38,6 +38,41 @@ export const getNasaInfo = async (sol = 0) => {
   }
 };
 
+export const getNasaInfoByCam = async (sol = 0, cam) => {
+  try {
+    const response = await fetch(`${server_API_root}/api/images/${sol}/${cam.toLowerCase()}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      if (response.status === 403) {
+        return {
+          success: false,
+          error: "403 Forbidden: Check your access rights",
+        };
+      }
+      if (response.status === 503 || response.status === 500) {
+        return {
+          success: false,
+          error: "Server Unavailable. Please try again later.",
+        };
+      }
+      return {
+        success: false,
+        error: `Request failed with status ${response.status}`,
+      };
+    }
+
+    const data = await response.json();
+
+    return { success: true, data };
+  } catch (error) {
+    return { success: false, error: "Error fetching images from backend" };
+  }
+};
+
 export const getManifestInfo = async () => {
   try {
     const response = await fetch(`${server_API_root}/api/info`, {

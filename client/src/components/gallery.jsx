@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
-import { getNasaInfo } from "../services/galleryService";
+import { getNasaInfoByCam } from "../services/galleryService";
 import { postFavService } from "../services/galleryService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -56,18 +56,14 @@ const Gallery = () => {
     setLoading(true);
 
     try {
-      const result = await getNasaInfo(sol);
+      const result = await getNasaInfoByCam(sol, camToFilter);
 
       if (result.success) {
-        console.log("API result:", result.data);
+        console.log("API result:", result.data.photos);
 
-        const filteredPhotos = result.data.photos.filter((photo) =>
-          photo.camera.name.includes(camToFilter)
-        );
-
-        const urls = filteredPhotos.map((img) => img.img_src);
+        const urls = result.data.photos.map((img) => img.img_src);
         setImages(urls);
-        setTotalPhotos(filteredPhotos.length);
+        setTotalPhotos(urls.length);
         setError(null);
       } else {
         setImages([]);
