@@ -51,7 +51,7 @@ const Graphs = () => {
         console.log("An unexpected error occurred in service");
       }
     } catch (error) {
-      console.log("Caught: ",error);
+      console.log("Caught: ", error);
     }
   }
 
@@ -87,13 +87,13 @@ const Graphs = () => {
         </Button>
       </div>
 
-      {loading && (
-        <div className="ml-[48%] mt-[15%]">
-          <BallTriangle></BallTriangle>
-        </div>
-      )}
+      <div className="relative flex justify-center items-center mt-10">
+        {loading && (
+          <div className="absolute flex items-center justify-center w-full h-full">
+            <BallTriangle />
+          </div>
+        )}
 
-      <div className="flex justify-center items-center mt-10">
         <div className="w-full max-w-screen-4xl h-[1000px] ml-60 mt-10">
           <Bar data={chartData} />
         </div>
