@@ -1,7 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { Rover2 } from "./Rover2.jsx";
+import { Rover } from "@/components/rover.jsx";
 
 export const ModelViewer = () => {
   return (
@@ -18,7 +18,7 @@ export const ModelViewer = () => {
           intensity={2}
         />
         <pointLight position={[0, 0, -10]} intensity={1.5} /> {/* Light at the back but not enough */}
-        <Rover2 scale={1.5} />
+        <Rover scale={1.5} />
         <OrbitControls />
       </Canvas>
     </div>

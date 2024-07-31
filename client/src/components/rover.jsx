@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Tooltip from "@/components/toolTip.jsx";
 import SphereComponent from "@/components/sphereCom";
 
-export const Rover2 = (props) => {
+export const Rover = (props) => {
   const { nodes, materials } = useGLTF("/rover2.gltf");
   const [hoveredMesh, setHoveredMesh] = useState(null);
 
