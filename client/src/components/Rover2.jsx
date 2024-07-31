@@ -5,8 +5,7 @@ import { useGLTF } from "@react-three/drei";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Tooltip from "@/components/toolTip.jsx";
-import SphereComponent from "@/components/sphereCom"; 
-
+import SphereComponent from "@/components/sphereCom";
 
 export const Rover2 = (props) => {
   const { nodes, materials } = useGLTF("/rover2.gltf");
@@ -67,7 +66,9 @@ export const Rover2 = (props) => {
           onClick={handleRear}
           geometry={nodes.Object_7.geometry}
           material={materials.parts_AO}
-          onPointerOver={() => handlePointerOver("Rover Hazard Avoidance Camera")}
+          onPointerOver={() =>
+            handlePointerOver("Rover Hazard Avoidance Camera")
+          }
           onPointerOut={handlePointerOut}
         />
         <mesh
@@ -95,25 +96,44 @@ export const Rover2 = (props) => {
         />
 
         {/*Right nav cam:*/}
-        <SphereComponent radius={0.07} position={[-1.35, 1.72, -0.3]}></SphereComponent>
+        <SphereComponent
+          radius={0.07}
+          position={[-1.35, 1.72, -0.3]}
+        ></SphereComponent>
 
         {/*Left nav cam:*/}
-        <SphereComponent radius={0.07} position={[-1.8, 1.72, -0.3]}></SphereComponent>
-        
+        <SphereComponent
+          radius={0.07}
+          position={[-1.8, 1.72, -0.3]}
+        ></SphereComponent>
+
         {/*Mars Hand Lens Imager:*/}
-        <SphereComponent radius={0.08} position={[-0.62, 1.66, 0.64]}></SphereComponent>
+        <SphereComponent
+          radius={0.08}
+          position={[-0.62, 1.66, 0.64]}
+        ></SphereComponent>
 
         {/*Right rear:*/}
+        <SphereComponent
+          radius={0.09}
+          position={[-0.56, 0.55, -2.1]}
+        ></SphereComponent>
+
+        {/*Left rear: */}
+        <SphereComponent
+          radius={0.09}
+          position={[-1.56, 0.55, -2.1]}
+        ></SphereComponent>
+
+        {/*ChemCam:*/}
         <SphereComponent></SphereComponent>
 
-        
-
-         {hoveredMesh && (
-        <Tooltip
-          position={[-1, 2.5, -1]} // Adjust the position as needed
-          text={hoveredMesh}
-        />
-      )}
+        {hoveredMesh && (
+          <Tooltip
+            position={[-1, 2.5, -1]} // Adjust the position as needed
+            text={hoveredMesh}
+          />
+        )}
       </group>
     </group>
   );
