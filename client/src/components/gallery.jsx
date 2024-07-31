@@ -13,9 +13,10 @@ const Gallery = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [sol, setSol] = useState(0);
-  const [submittedSol, setSubmittedSol] = useState(null);
   const [images, setImages] = useState([]); // Arr of urls
   const [totalPhotos, setTotalPhotos] = useState(0);
+  const [inputValue, setInputValue] = useState(0); // Temporary to hold input value
+
 
   const { camToFilter } = useParams(); // Initalizing a param to set later
 
@@ -35,28 +36,23 @@ const Gallery = () => {
       "Detects obstacles, ensuring safe navigation of the rover across the Martian surface.";
     camName = "Rover Hazard Avoidance Camera";
   } else if (camToFilter === "CHEMCAM") {
-    cameraDetails = "Uses a laser to vaporize materials then later analyzes their elemental composition using an on-board spectrograph."
-    camName = "ChemCam"
+    cameraDetails =
+      "Uses a laser to vaporize materials then later analyzes their elemental composition using an on-board spectrograph.";
+    camName = "ChemCam";
   } else if (camToFilter === "MAST") {
-    cameraDetails = "Captures high-resolution color images and videos to aid in analyzing the planet's surface and atmosphere."
-    camName = "Mast Camera"
+    cameraDetails =
+      "Captures high-resolution color images and videos to aid in analyzing the planet's surface and atmosphere.";
+    camName = "Mast Camera";
   } else if (camToFilter === "MARDI") {
-    cameraDetails = "Captures high-resolution images of Mars during the rover's descent."
-    camName = "Mars Descent Imager"
+    cameraDetails =
+      "Captures high-resolution images of Mars during the rover's descent.";
+    camName = "Mars Descent Imager";
   }
 
   // Navigation:
-  function handleBack() {
-    navigate("/selectCamPage");
-  }
-
-  function navigateAnnotated() {
-    navigate("/annotated");
-  }
-
-  function navigateDash() {
-    navigate("/dashboard");
-  }
+  const handleBack = () => navigate("/selectCamPage");
+  const navigateAnnotated = () => navigate("/annotated");
+  const navigateDash = () => navigate("/dashboard");
 
   async function get() {
     setLoading(true);
@@ -84,14 +80,17 @@ const Gallery = () => {
     }
   }
 
+  const handleSubmit = () => {
+    setSol(inputValue);
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(Number(e.target.value));
+  };
+
   useEffect(() => {
     get();
-  }, [submittedSol]);
-
-  const handleSubmit = () => {
-    // on submit the total pics should be shown!!!! FIXX
-    setSubmittedSol(sol);
-  };
+  }, [sol]);
 
   return (
     <div className="w-full min-h-screen p-4 text-white">
@@ -125,8 +124,8 @@ const Gallery = () => {
         <input
           type="number"
           id="sol"
-          value={sol}
-          onChange={(e) => setSol(Number(e.target.value))}
+          value={inputValue}
+          onChange={handleInputChange}
           min="0"
           className="w-24 px-2 py-1 border border-gray-600 rounded bg-gray-700 text-white"
         />
