@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGLTF } from "@react-three/drei";
 import "react-toastify/dist/ReactToastify.css";
@@ -77,7 +77,7 @@ export const Rover2 = (props) => {
           handleClick={handleNav}
           handlePointerOver={() => handlePointerOver("Navigation Camera")}
           handlePointerOut={handlePointerOut}
-          hovered={hoveredMesh}
+          hovered={hoveredMesh === "Navigation Camera"}
         />
 
         {/*Left nav cam:*/}

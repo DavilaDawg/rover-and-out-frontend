@@ -7,16 +7,17 @@ const SphereComponent = ({
   position,
   handlePointerOut,
   handlePointerOver,
-  handleClick
+  handleClick,
+  hovered
 }) => {
   return (
     <mesh position={position} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut} onClick={handleClick}>
       <Sphere args={[radius, 32, 32]}>
         <meshStandardMaterial
           attach="material"
-          color="orange"
+          color={hovered ? "aqua" : "orange"}
           transparent={true}
-          opacity={0.6} // 0 is fully transparent, 1 is fully opaque
+          opacity={0.4} // 0 is fully transparent, 1 is fully opaque
         />
       </Sphere>
     </mesh>
