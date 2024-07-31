@@ -34,9 +34,15 @@ const Gallery = () => {
     cameraDetails =
       "Detects obstacles, ensuring safe navigation of the rover across the Martian surface.";
     camName = "Rover Hazard Avoidance Camera";
-  } else if (camToFilter === "CHEM") {
+  } else if (camToFilter === "CHEMCAM") {
     cameraDetails = "Uses a laser to vaporize materials then later analyzes their elemental composition using an on-board spectrograph."
     camName = "ChemCam"
+  } else if (camToFilter === "MAST") {
+    cameraDetails = "Captures high-resolution color images and videos to aid in analyzing the planet's surface and atmosphere."
+    camName = "Mast Camera"
+  } else if (camToFilter === "MARDI") {
+    cameraDetails = "Captures high-resolution images of Mars during the rover's descent."
+    camName = "Mars Descent Imager"
   }
 
   // Navigation:

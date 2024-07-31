@@ -34,15 +34,15 @@ export const Rover2 = (props) => {
   }
 
   function handleChem() {
-    navigate("/gallery/CHEM");
+    navigate("/gallery/CHEMCAM");
   }
 
   function handleMast() {
-    console.log("mast");
+    navigate("/gallery/MAST");
   }
 
   function handleDescent() {
-    console.log("descent");
+    navigate("/gallery/MARDI");
   }
 
   useEffect(() => {
