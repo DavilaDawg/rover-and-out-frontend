@@ -113,34 +113,25 @@ const Home = () => {
             MongoDB
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
-            Vite
-          </li>
-          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
             Vercel
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
             Render.js
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
-            Axios
-          </li>
-          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
             Postman
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
-            Tailwind
+            Tailwind CSS
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
             Shadcn/ui
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
-            Material UI components
+            Three.js
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
-            3Js
-          </li>
-          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
-            FiberJs
+            Fiber.Js
           </li>
         </ul>
       </section>
