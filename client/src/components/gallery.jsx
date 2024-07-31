@@ -6,6 +6,7 @@ import { getNasaInfo } from "../services/galleryService";
 import { postFavService } from "../services/galleryService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BallTriangle } from "react-loader-spinner";
 
 const Gallery = () => {
   const navigate = useNavigate();
@@ -150,7 +151,11 @@ const Gallery = () => {
         </Button>
       </div>
 
-      {loading && <p className="text-center mt-2">Loading images...</p>}
+      {loading && (
+        <div className="ml-[48%] mt-[15%]">
+          <BallTriangle></BallTriangle>
+        </div>
+      )}
 
       {error && <p className="text-center text-red-400 mt-2">{error}</p>}
 

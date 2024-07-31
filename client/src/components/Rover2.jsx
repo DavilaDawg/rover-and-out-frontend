@@ -5,6 +5,8 @@ import { useGLTF } from "@react-three/drei";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Tooltip from "@/components/toolTip.jsx";
+import SphereComponent from '@/components/sphereComponent.jsx'; 
+
 
 export const Rover2 = (props) => {
   const { nodes, materials } = useGLTF("/rover2.gltf");
@@ -72,7 +74,7 @@ export const Rover2 = (props) => {
           onClick={handleProb}
           geometry={nodes.Object_8.geometry}
           material={materials.tex_03}
-          onPointerOver={() => handlePointerOver("2")}
+          onPointerOver={() => handlePointerOver("Mars Hand Lens Imager")}
           onPointerOut={handlePointerOut}
         />
         <mesh geometry={nodes.Object_9.geometry} material={materials.tex_05} />
@@ -91,9 +93,11 @@ export const Rover2 = (props) => {
           geometry={nodes.Object_12.geometry}
           material={materials.internals}
         />
+        <SphereComponent></SphereComponent>
+        
          {hoveredMesh && (
         <Tooltip
-          position={[-1, 2, -1]} // Adjust the position as needed
+          position={[-1, 2.5, -1]} // Adjust the position as needed
           text={hoveredMesh}
         />
       )}

@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import { Text } from '@react-three/drei';
-import { useFrame, useThree } from '@react-three/fiber';
+import React, { useRef, useEffect } from "react";
+import { Text } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 
 const Tooltip = ({ position, text }) => {
   const tooltipRef = useRef();
@@ -15,7 +15,7 @@ const Tooltip = ({ position, text }) => {
 
   return (
     <mesh ref={tooltipRef} position={position}>
-      <planeGeometry args={[1, 0.5]} /> {/* Adjust size as needed */}
+      <planeGeometry args={[1.6, 0.5]} /> {/* Size */}
       <meshStandardMaterial color="#666" />
       <Text
         color="#FFF"
@@ -23,7 +23,7 @@ const Tooltip = ({ position, text }) => {
         maxWidth={2.8}
         lineHeight={1.5}
         textAlign="center"
-        position={[0, 0, 0.01]} // Slightly offset for visibility
+        position={[0, 0, 0.01]}
       >
         {text}
       </Text>

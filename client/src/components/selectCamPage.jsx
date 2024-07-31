@@ -12,8 +12,7 @@ const SelectCamPage = () => {
   }
 
   return (
-    <div className="relative flex flex-row ml-[1%]">
-
+    <>
       <div>
         <h1 className="md:text-6xl ml-5 mt-3">Select camera</h1>
         <Button
@@ -22,10 +21,9 @@ const SelectCamPage = () => {
         >
           Back
         </Button>
-        <img className="w-[200%] h-[35%] ml-[3%] mt-[4%]" src="/cameraa2.jpg" />
       </div>
       <ModelViewer></ModelViewer>
-    </div>
+    </>
   );
 };
 
