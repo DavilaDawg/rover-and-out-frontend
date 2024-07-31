@@ -5,7 +5,7 @@ import { useGLTF } from "@react-three/drei";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Tooltip from "@/components/toolTip.jsx";
-import SphereComponent from '@/components/sphereComponent.jsx'; 
+import SphereComponent from "@/components/sphereCom"; 
 
 
 export const Rover2 = (props) => {
@@ -93,8 +93,9 @@ export const Rover2 = (props) => {
           geometry={nodes.Object_12.geometry}
           material={materials.internals}
         />
+
         <SphereComponent></SphereComponent>
-        
+
          {hoveredMesh && (
         <Tooltip
           position={[-1, 2.5, -1]} // Adjust the position as needed
