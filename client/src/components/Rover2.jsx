@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGLTF } from "@react-three/drei";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Tooltip from "@/components/toolTip.jsx";
 import SphereComponent from "@/components/sphereCom";
@@ -23,33 +22,15 @@ export const Rover2 = (props) => {
   const navigate = useNavigate();
 
   function handleRear() {
-    toast.info("Rover Hazard Avoidance Camera selected", {
-      position: "top-right",
-      autoClose: 1500, // [ms]
-    });
-    setTimeout(() => {
-      navigate("/gallery/RHAZ");
-    }, 2200);
+    navigate("/gallery/RHAZ");
   }
 
   function handleProb() {
-    toast.info("Mars Hand Lens Imager selected", {
-      position: "top-right",
-      autoClose: 1500,
-    });
-    setTimeout(() => {
-      navigate("/gallery/MAHLI");
-    }, 2200);
+    navigate("/gallery/MAHLI");
   }
 
   function handleNav() {
-    toast.info("Navigation Camera selected", {
-      position: "top-right",
-      autoClose: 1500,
-    });
-    setTimeout(() => {
-      navigate("/gallery/NAVCAM");
-    }, 2200);
+    navigate("/gallery/NAVCAM");
   }
 
   useEffect(() => {
@@ -79,13 +60,7 @@ export const Rover2 = (props) => {
           onPointerOut={handlePointerOut}
         />
         <mesh geometry={nodes.Object_9.geometry} material={materials.tex_05} />
-        <mesh
-          onClick={handleNav}
-          geometry={nodes.Object_10.geometry}
-          material={materials.tex_04}
-          onPointerOver={() => handlePointerOver("Navigation Camera")}
-          onPointerOut={handlePointerOut}
-        />
+        <mesh geometry={nodes.Object_10.geometry} material={materials.tex_04} />
         <mesh
           geometry={nodes.Object_11.geometry}
           material={materials.tex_03a}
@@ -99,7 +74,11 @@ export const Rover2 = (props) => {
         <SphereComponent
           radius={0.05}
           position={[-1.35, 1.72, -0.28]}
-        ></SphereComponent>
+          handleClick={handleNav}
+          handlePointerOver={() => handlePointerOver("Navigation Camera")}
+          handlePointerOut={handlePointerOut}
+          hovered={hoveredMesh}
+        />
 
         {/*Left nav cam:*/}
         <SphereComponent
@@ -125,10 +104,11 @@ export const Rover2 = (props) => {
           position={[-1.56, 0.55, -2.1]}
         ></SphereComponent>
 
-        {/*Front left hazcams: */}
+        {/*Front left hazcams:*/}
         <SphereComponent
-        radius={0.18}
-        position={[-1.02, 0.5, -0.28]}></SphereComponent>
+          radius={0.18}
+          position={[-1.02, 0.5, -0.28]}
+        ></SphereComponent>
 
         {/*ChemCam:*/}
         <SphereComponent
@@ -138,22 +118,21 @@ export const Rover2 = (props) => {
 
         {/*Mast right:*/}
         <SphereComponent
-        radius={0.05} 
-        position={[-1.46, 1.72, -0.28]}
+          radius={0.05}
+          position={[-1.46, 1.72, -0.28]}
         ></SphereComponent>
 
         {/*Mast left:*/}
         <SphereComponent
-        radius={0.05} 
-        position={[-1.7, 1.72, -0.28]}
+          radius={0.05}
+          position={[-1.7, 1.72, -0.28]}
         ></SphereComponent>
 
         {/*Mars Descent Imager:*/}
         <SphereComponent
-        radius={0.07}
-        position={[-0.42, 0.43, -0.42]}
+          radius={0.07}
+          position={[-0.42, 0.43, -0.42]}
         ></SphereComponent>
-
 
         {hoveredMesh && (
           <Tooltip
