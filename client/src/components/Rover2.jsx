@@ -100,6 +100,13 @@ export const Rover2 = (props) => {
         {/*Left nav cam:*/}
         <SphereComponent radius={0.07} position={[-1.8, 1.72, -0.3]}></SphereComponent>
         
+        {/*Mars Hand Lens Imager:*/}
+        <SphereComponent radius={0.08} position={[-0.62, 1.66, 0.64]}></SphereComponent>
+
+        {/*Right rear:*/}
+        <SphereComponent></SphereComponent>
+
+        
 
          {hoveredMesh && (
         <Tooltip
