@@ -33,19 +33,10 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
             <h3 className="text-2xl font-semibold text-white mb-4">
-              Interactive Timeline
+              Interactive 3D Map
             </h3>
             <p className="text-gray-300">
-              Track the photos taken by the rover on Mars with an interactive
-              timeline.
-            </p>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
-            <h3 className="text-2xl font-semibold text-white mb-4">
-              Photo Gallery
-            </h3>
-            <p className="text-gray-300">
-              Access a gallery of rover photos taken over the past six months.
+              Explore Mars with an interactive 3D map.
             </p>
           </div>
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
@@ -54,6 +45,14 @@ const Home = () => {
             </h3>
             <p className="text-gray-300">
               View and interact with a 3D model of the rover.
+            </p>
+          </div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+            <h3 className="text-2xl font-semibold text-white mb-4">
+              Photo Gallery
+            </h3>
+            <p className="text-gray-300">
+              Access a gallery of all 695670 photos taken by Curiosity.
             </p>
           </div>
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
@@ -67,11 +66,10 @@ const Home = () => {
           </div>
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
             <h3 className="text-2xl font-semibold text-white mb-4">
-              Interactive 3D Map
+              Save favorites
             </h3>
             <p className="text-gray-300">
-              Explore Mars with an interactive 3D map, allowing users to view
-              where images were taken on the
+              Create a collection of all the beautiful and unique terrain and features of Mars.
             </p>
           </div>
         </div>
