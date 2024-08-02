@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
 
 const Home = () => {
-  // Navigation:
   const navigate = useNavigate();
 
   function handleClick() {
@@ -92,7 +91,7 @@ const Home = () => {
 
       <section className="py-16 px-8 md:px-12">
         <p className="text-3xl md:text-4xl text-white mb-8 font-semibold text-center">
-          Technologies and Libraries:
+          Technologies:
         </p>
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
@@ -108,13 +107,10 @@ const Home = () => {
             Mongoose
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
-            MongoDB
+            MongoDB Atlas
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
             Vercel
-          </li>
-          <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
-            Render.js
           </li>
           <li className="bg-gray-600 p-4 rounded-lg border border-gray-500 text-gray-100 text-lg font-medium shadow-sm flex items-center justify-center">
             Postman
