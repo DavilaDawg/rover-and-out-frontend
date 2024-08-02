@@ -1,5 +1,3 @@
-// galleryService.js
-
 const server_API_root = "http://localhost:3000";
 
 // Images and info funcs
