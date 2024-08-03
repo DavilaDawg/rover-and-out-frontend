@@ -32,7 +32,7 @@ export const getNasaInfo = async (sol = 0) => {
 
     return { success: true, data };
   } catch (error) {
-    return { success: false, error: `Error fetching images from backend: ${error}` };
+    return { success: false, error: "Error fetching images from backend" }
   }
 };
 
