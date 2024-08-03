@@ -1,7 +1,5 @@
 import "@/App.css";
 import "@/index.css";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-
 
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
