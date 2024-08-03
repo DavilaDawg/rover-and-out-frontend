@@ -68,7 +68,8 @@ const Home = () => {
               Save favorites
             </h3>
             <p className="text-gray-300">
-              Create a collection of all the beautiful and unique terrain and features of Mars.
+              Create a collection of all the beautiful and unique terrain and
+              features of Mars.
             </p>
           </div>
         </div>

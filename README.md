@@ -1,5 +1,7 @@
 # Rover&Out
 
+---
+
 Welcome to *Rover&Out*, an innovative educational app designed to bring the wonders of Mars and the Curiosity Rover to your fingertips. Dive deep into the fascinating world of space exploration and inspire a love for science and discovery with our interactive features.
 
 ## Overview
@@ -10,7 +12,52 @@ Welcome to *Rover&Out*, an innovative educational app designed to bring the wond
 
 ### 1. **Gallery Exploration**
 
-- **Filter by Day:** Easily browse through photos taken by the Curiosity Rover by selecting a specific sol.
+- **Filter by Day:** Easily browse through photos taken by the Curiosity Rover by selecting a specific sol (Martian day).
+- **Filter by Day and Camera:** For a more detailed exploration, filter images by both the day and the camera used. Users are then directed to a 3D model of the rover.
+
+### 2. **3D Rover Model**
+
+- **Interactive Model:** View an interactive 3D model of the Curiosity Rover, complete with all 17 cameras highlighted. Rotate and zoom to explore the rover's design and learn the location of each camera.
+- **Camera Details:** A panel displays the name and details of each camera, allowing users to understand their functions and placements.
+
+### 3. **Camera-Specific Galleries**
+
+- **Photo Collections:** Select a camera to view all images captured by that specific camera on any chosen day. Explore detailed and focused photo sets from various perspectives of Mars.
+
+### 4. **Interactive Map**
+
+- **Location-Based Exploration:** Click on various locations on Mars to view images taken at those specific points. Each location is paired with a top-down image of the surrounding terrain, helping users to identify and recognize Martian features.
+
+### 5. **Favorites and Annotations**
+
+- **Create Collections:** Mark your favorite images and save them in a personal gallery to create a collection of the most stunning Martian terrain and features.
+- **Annotate Images:** Click on any image to view it full screen, annotate, and draw on it. Save these annotated images to a separate gallery for future reference and study.
+
+### 6. **Curiosity Rover Data**
+
+- **Mission Statistics:** Access detailed data including the total number of photos taken per sol, launch date, landing date, journey duration, gallery maximum sol, total photos, and distance traveled by the rover.
+
+## Inspire and Educate
+
+*RoverOut* is designed to revolutionize the way children and enthusiasts interact with space data. By combining detailed imagery, interactive features, and educational insights, our app aims to ignite a passion for space exploration and science.
+
+Certainly! Here’s the revised *README* file with the updated “How to Get Started” section for running the app locally:
+
+---
+
+# Rover and Out
+
+Welcome to *Rover and Out*, an innovative educational app designed to bring the wonders of Mars and the Curiosity Rover to your fingertips. Dive deep into the fascinating world of space exploration and inspire a love for science and discovery with our interactive features.
+
+## Overview
+
+*Rover and Out* offers a unique platform for users to explore the Curiosity Rover's mission on Mars. Our app provides educational insights and interactive experiences that make learning about space both engaging and informative.
+
+## Key Features
+
+### 1. **Gallery Exploration**
+
+- **Filter by Day:** Easily browse through photos taken by the Curiosity Rover by selecting a specific sol (Martian day).
 - **Filter by Day and Camera:** For a more detailed exploration, filter images by both the day and the camera used. Users are then directed to a 3D model of the rover.
 
 ### 2. **3D Rover Model**
