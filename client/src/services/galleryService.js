@@ -1,4 +1,4 @@
-const server_API_root = "http://https://rover-server-6gl9aqzqi-isabella-davilas-projects.vercel.app";
+const server_API_root = "https://rover-server-6gl9aqzqi-isabella-davilas-projects.vercel.app";
 
 // Images and info funcs
 export const getNasaInfo = async (sol = 0) => {
