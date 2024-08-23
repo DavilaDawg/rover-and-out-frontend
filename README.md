@@ -6,7 +6,7 @@ Rover&out is an educational app designed to bring the wonders of Mars and the Cu
 
 ## Overview
 
-*Rover&Out* offers a unique platform for users to explore the Curiosity Rover's mission on Mars. Our app provides educational insights and interactive experiences that make learning about space both engaging and informative.
+Rover&Out offers a unique platform for users to explore the Curiosity Rover's mission on Mars. Our app provides educational insights and interactive experiences that make learning about space both engaging and informative.
 
 ## Key Features
 
