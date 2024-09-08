@@ -39,7 +39,19 @@ To run *Rover&out* locally, follow these steps:
    
    - Clone this repository to your local machine using `git clone <repository_url>`.
 
-2. **Set Up the Client:**
+2. **Obtain a NASA API Key:**
+   
+   - Go to [NASA's API portal](https://api.nasa.gov/) and sign up to get your personal API key.
+
+3. **Configure the API Key:**
+   
+   - Create a file named `.env` in the `/Rover-server` directory.
+   
+   - Add your API key to this file:
+     
+     `NASA_API_KEY=your_api_key_here`
+
+4. **Set Up the Client:**
    
    - Navigate to the client directory:
      
@@ -49,11 +61,11 @@ To run *Rover&out* locally, follow these steps:
      
      `npm install`
    
-   - Start the development server:
+   - Start the development server (ensure current directory is /client):
      
      `npm run dev`
 
-3. **Set Up the Server:**
+5. **Set Up the Server:**
    
    - Navigate to the server directory:
      
@@ -67,19 +79,7 @@ To run *Rover&out* locally, follow these steps:
      
      `node --watch index.js`
 
-4. **Obtain a NASA API Key:**
-   
-   - Go to [NASA's API portal](https://api.nasa.gov/) and sign up to get your personal API key.
-
-5. **Configure the API Key:**
-   
-   - Create a file named `.env` in the `/Rover-server` directory.
-   
-   - Add your API key to this file:
-     
-     `NASA_API_KEY=your_api_key_here`
-
-6. **Access the App:**
+6. **Access the Deployed App:**
    
    - Open your browser and go to [https://rover-out.vercel.app/](https://rover-out.vercel.app/) to start exploring!
 
