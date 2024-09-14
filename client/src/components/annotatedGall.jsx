@@ -1,9 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const AnnotatedGallery = () => {
+  const navigate = useNavigate();
+
+  // Navigation:
+  function handleBack() {
+    navigate("/gallDash");
+  }
 
   return (
-   <p>In progress</p>
+    <>
+      <p>This page is in progress</p>
+    </>
   );
 };
 

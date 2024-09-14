@@ -157,12 +157,14 @@ const Gallery = () => {
       </div>
 
       <div className="flex justify-center mt-4 space-x-2">
+        {/*
         <Button
           onClick={navigateAnnotated}
           className="bg-gray-600 text-gray-300 py-1 px-14 rounded hover:bg-gray-600 transition-colors"
         >
           View all annotated
         </Button>
+        */}
       </div>
 
       {loading && (

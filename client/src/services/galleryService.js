@@ -1,4 +1,5 @@
-const server_API_root = "https://rover-server-6gl9aqzqi-isabella-davilas-projects.vercel.app";
+//const server_API_root = "https://rover-server-6gl9aqzqi-isabella-davilas-projects.vercel.app";
+const server_API_root = "http://localhost:3000";
 
 // Images and info funcs
 export const getNasaInfo = async (sol = 0) => {
@@ -36,7 +37,7 @@ export const getNasaInfo = async (sol = 0) => {
   }
 };
 
-export const getNasaInfoByCam = async (sol = 0, cam) => {
+export const getNasaInfoByCam = async (sol, cam) => {
   try {
     const response = await fetch(
       `${server_API_root}/api/images/${sol}/${cam.toLowerCase()}`,
@@ -131,7 +132,7 @@ export const getMapImgs = async (location) => {
       range = 20;
     }
 
-    let responsePhotosArr = [];
+    const responsePhotosArr = [];
     for (let i = 0; i < range; i++) {
       const sol = sol1 + i;
       const response = await fetch(`${server_API_root}/api/images/${sol}`, {
