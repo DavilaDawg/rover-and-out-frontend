@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 const AnnotatedGallery = () => {
   const navigate = useNavigate();
 
-  // Navigation:
   function handleBack() {
     navigate("/gallDash");
   }

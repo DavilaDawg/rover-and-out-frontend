@@ -1,8 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-// Define the types for Theme and ThemeProviderProps
-// These are used for documentation purposes and can be omitted in JavaScript
-
 const initialState = {
   theme: "system",
   setTheme: () => null,

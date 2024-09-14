@@ -12,7 +12,6 @@ const MapGall = () => {
 
   const { selectedLocation } = useParams();
 
-  // Mapping selectedLocation to longLocation
   const locationMap = {
     LAND: "Bradbury Landing",
     DRILL: "Mary Anning & Grocken Drill Sites",
@@ -26,22 +25,21 @@ const MapGall = () => {
 
   const longLocation = locationMap[selectedLocation] || "Unknown Location";
 
-  // Navigation
   const navigate = useNavigate();
 
   function handleBack() {
-    navigate("/map");
+    navigate("/mapComponent");
   }
 
   async function get() {
     setLoading(true);
     try {
-      let result = await getMapImgs(selectedLocation); // Res is a arr of objs with img_src key
+      const result = await getMapImgs(selectedLocation); // Res is a arr of objs with img_src key
 
       if (result.success) {
         console.log("API result:", result);
 
-        let concat = result.concatArr.flatMap((item) => item.img_src);
+        const concat = result.concatArr.flatMap((item) => item.img_src);
 
         setImages(concat);
         setError(null);
@@ -121,7 +119,7 @@ const MapGall = () => {
                     onClick={() => {
                       console.log("clicked");
                       navigate("/imageViewer", {
-                        // make new imageViewer component that doesnt have these states!!!
+                        // make new imageViewer component that doesnt have these states!
                         state: {
                           imageUrl: image,
                           isBoring: false,

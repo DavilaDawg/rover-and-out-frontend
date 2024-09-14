@@ -4,7 +4,6 @@ import { useNavigate} from "react-router-dom";
 
 const GallDash = () => {
 
-  // Navigation:
   const navigate = useNavigate();
 
   function handleBoring() {

@@ -7,13 +7,12 @@ export const ModelViewer = () => {
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
       <Canvas camera={{ fov: 80, position: [0, 1, 5] }}>
-        {/* Lighing: */}
         <ambientLight intensity={1} />
         <directionalLight position={[2, 10, 10]} intensity={2} />
         <pointLight position={[-10, -10, 10]} intensity={1} />
         <spotLight
           position={[0, 10, 10]}
-          angle={0.4} // Increased angle for a wider cone of light
+          angle={0.4} 
           penumbra={1}
           intensity={2}
         />

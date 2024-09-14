@@ -14,7 +14,6 @@ import {
   Legend,
 } from "chart.js";
 
-// Register the components for Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -61,7 +60,7 @@ const Graphs = () => {
 
   const landingDate = info.landing_date;
   const launchDate = info.launch_date;
-  const maxSol = info.max_sol; // Last sol with images in API
+  const maxSol = info.max_sol; 
   const totalPhotos = info.total_photos;
 
   const chartData = {

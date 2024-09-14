@@ -4,9 +4,8 @@ import { useFrame, useThree } from "@react-three/fiber";
 
 const Tooltip = ({ position, text }) => {
   const tooltipRef = useRef();
-  const { camera } = useThree(); // Access the camera from the context
+  const { camera } = useThree(); 
 
-  // Make the tooltip face the camera
   useFrame(() => {
     if (tooltipRef.current) {
       tooltipRef.current.lookAt(camera.position);
@@ -15,7 +14,7 @@ const Tooltip = ({ position, text }) => {
 
   return (
     <mesh ref={tooltipRef} position={position}>
-      <planeGeometry args={[1.6, 0.5]} /> {/* Size */}
+      <planeGeometry args={[1.6, 0.5]} /> 
       <meshStandardMaterial color="#666" />
       <Text
         color="#FFF"

@@ -1,7 +1,6 @@
 //const server_API_root = "https://rover-server-6gl9aqzqi-isabella-davilas-projects.vercel.app";
 const server_API_root = "http://localhost:3000";
 
-// Images and info funcs
 export const getNasaInfo = async (sol = 0) => {
   try {
     const response = await fetch(`${server_API_root}/api/images/${sol}`, {
@@ -113,7 +112,6 @@ export const getManifestInfo = async () => {
   }
 };
 
-// Map service:
 export const getMapImgs = async (location) => {
   try {
     let sol1;
@@ -128,7 +126,7 @@ export const getMapImgs = async (location) => {
       sol1 = 4065;
       range = 37;
     } else if (location === "DRILL") {
-      sol1 = 2371; //2890 and 2405 and 2136
+      sol1 = 2371; 
       range = 20;
     }
 
@@ -176,35 +174,6 @@ export const getMapImgs = async (location) => {
   }
 };
 
-// Annotation func (not working)
-export const postAnnotations = async (dataURL, metaData) => {
-  try {
-    const response = await fetch(`${server_API_root}/save`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ imageData: dataURL, metaData: metaData }),
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      console.error("Error details:", result);
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    if (result.success) {
-      console.log("Image saved successfully");
-    } else {
-      console.error("Error saving image:", result.error);
-    }
-  } catch (error) {
-    console.error("Unexpected error:", error);
-  }
-};
-
-// Fav funcs:
 export const getFavsService = async () => {
   try {
     const response = await fetch(`${server_API_root}/favs`, {
@@ -262,4 +231,32 @@ export const deleteFavService = async (dataURL) => {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
   });
+};
+
+// Annotation func (not working)
+export const postAnnotations = async (dataURL, metaData) => {
+  try {
+    const response = await fetch(`${server_API_root}/save`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ imageData: dataURL, metaData: metaData }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      console.error("Error details:", result);
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    if (result.success) {
+      console.log("Image saved successfully");
+    } else {
+      console.error("Error saving image:", result.error);
+    }
+  } catch (error) {
+    console.error("Unexpected error:", error);
+  }
 };

@@ -18,7 +18,6 @@ export const Rover = (props) => {
     setHoveredMesh(null);
   };
 
-  // Navigation
   const navigate = useNavigate();
 
   function handleRear() {

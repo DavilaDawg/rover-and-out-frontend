@@ -14,7 +14,6 @@ const ImageViewer = () => {
   const [maState, setMaState] = useState(null);
   const [message, setMessage] = useState(false);
 
-  // Navigation:
   if (!imageUrl) {
     const path = isBoring ? "/boringGallery" : `/gallery/${filter}`;
     navigate(path);
@@ -30,7 +29,6 @@ const ImageViewer = () => {
     navigate("/dashboard");
   }
 
-  // Annotation:
   useEffect(() => {
     if (imgRef.current) {
       const sourceImage = imgRef.current;

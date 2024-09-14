@@ -1,12 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
-// Ui components:
 import ModeToggle from "./mode-toggle";
 import { Button } from "@/components/ui/button.jsx";
 
 const Dashboard = () => {
-  // Navigation:
+
   const navigate = useNavigate();
 
   function handleLogOut() {

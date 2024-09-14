@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "@/components/home.jsx";
 import MyLogin from "@/components/login.jsx";
 import Dashboard from "@/components/dashboard.jsx";
-import Map from "@/components/map.jsx";
+import mapComponent from "@/components/map.jsx";
 import Gallery from "@/components/gallery.jsx";
 import Graphs from "@/components/graphs.jsx";
 import AnnotatedGallery from "@/components/annotatedGall.jsx";
@@ -43,8 +43,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<MyLogin />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/map" element={<Map />} />
-            <Route path="/gallery/:camToFilter" element={<Gallery />} /> {/* Param has to be the same as the one defined by useParams! */}
+            <Route path="/map" element={<mapComponent />} />
+            <Route path="/gallery/:camToFilter" element={<Gallery />} /> {/* Caution: param has to be the same as the one defined by useParams */}
             <Route path="/boringGallery" element={<BoringGallery />} />
             <Route path="/graphs" element={<Graphs />} />
             <Route path="/annotated" element={<AnnotatedGallery />} />

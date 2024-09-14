@@ -48,7 +48,6 @@ const Gallery = () => {
     camName = "Mars Descent Imager";
   }
 
-  // Navigation:
   const handleBack = () => navigate("/selectCamPage");
   const navigateAnnotated = () => navigate("/annotated");
   const navigateDash = () => navigate("/dashboard");
@@ -62,14 +61,14 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    const controller = new AbortController(); // Create a new AbortController
+    const controller = new AbortController(); 
     const { signal } = controller;
 
     async function get() {
       setLoading(true);
 
       try {
-        const result = await getNasaInfoByCam(sol, camToFilter, { signal }); // Pass the signal to the fetch
+        const result = await getNasaInfoByCam(sol, camToFilter); 
         if (result.success) {
           console.log("API result:", result.data.photos);
 

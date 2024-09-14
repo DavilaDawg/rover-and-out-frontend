@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button.jsx";
 import RoverButton from "@/components/ui/roverButton.jsx";
 
-const Map = () => {
+const mapComponent = () => {
   const navigate = useNavigate();
 
   const handleBack = () => navigate("/dashboard");
@@ -60,4 +60,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default mapComponent;

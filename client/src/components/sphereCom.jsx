@@ -17,7 +17,7 @@ const SphereComponent = ({
           attach="material"
           color={hovered ? "aqua" : "orange"}
           transparent={true}
-          opacity={0.4} // 0 is transparent 
+          opacity={0.4} 
         />
       </Sphere>
     </mesh>
